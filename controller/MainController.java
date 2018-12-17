@@ -1260,7 +1260,7 @@ public class MainController {
 				int whereModify;
 				whereModify = cartController.currentCart.indexOf(this panel's SelectedFood);
 			
-				SelectedFood tmpSelectedFood = currentCart.get(whereModify);
+				SelectedFood tmpSelectedFood = cartController.currentCart.get(whereModify);
 				tmpSelectedFood.count++;
 			}
 		};
@@ -1270,7 +1270,7 @@ public class MainController {
 				int whereModify;
 				whereModify = cartController.currentCart.indexOf(this panel's SelectedFood);
 			
-				SelectedFood tmpSelectedFood = currentCart.get(whereModify);
+				SelectedFood tmpSelectedFood = cartController.currentCart.get(whereModify);
 				tmpSelectedFood.count--;
 			}
 		};
