@@ -1148,46 +1148,46 @@ public class MainController {
 			public void actionPerformed(ActionEvent e) {
 				switch(currState) {
 				case "Bacon":
-					doneSelect = buyController.putInCart(bacon);
+					doneSelect = buyController.execute(bacon);
 					break;
 				case "Bean":
-					doneSelect = buyController.putInCart(bean);
+					doneSelect = buyController.execute(bean);
 					break;
 				case "Cheeze":
-					doneSelect = buyController.putInCart(cheeze);
+					doneSelect = buyController.execute(cheeze);
 					break;
 				case "Double Cheese":
-					doneSelect = buyController.putInCart(doublecheese);
+					doneSelect = buyController.execute(doublecheese);
 					break;
 				case "Fish Cutlet":
-					doneSelect = buyController.putInCart(fishcutlet);
+					doneSelect = buyController.execute(fishcutlet);
 					break;
 				case "Guacamole":
-					doneSelect = buyController.putInCart(guacamole);
+					doneSelect = buyController.execute(guacamole);
 					break;
 				case "Jalapeno Pepper":
-					doneSelect = buyController.putInCart(jalapenopepper);
+					doneSelect = buyController.execute(jalapenopepper);
 					break;
 				case "Mozzarella Cheese":
-					doneSelect = buyController.putInCart(mozzarellacheese);
+					doneSelect = buyController.execute(mozzarellacheese);
 					break;
 				case "Peanut Butter":
-					doneSelect = buyController.putInCart(peanutbutter);
+					doneSelect = buyController.execute(peanutbutter);
 					break;
 				case "Pineapple":
-					doneSelect = buyController.putInCart(pineapple);
+					doneSelect = buyController.execute(pineapple);
 					break;
 				case "Sausage":
-					doneSelect = buyController.putInCart(sausage);
+					doneSelect = buyController.execute(sausage);
 					break;
 				case "Shrimp":
-					doneSelect = buyController.putInCart(shrimp);
+					doneSelect = buyController.execute(shrimp);
 					break;
 				case "Tomato":
-					doneSelect = buyController.putInCart(tomato);
+					doneSelect = buyController.execute(tomato);
 					break;
 				case "Wedge Potato":
-					doneSelect = buyController.putInCart(wedgepotato);
+					doneSelect = buyController.execute(wedgepotato);
 					break;
 				}
 				cartController.addSelectedFood(doneSelect);
@@ -1218,7 +1218,7 @@ public class MainController {
 		
 		ActionListener purchase = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				buyController.execute(cartController.currentCart);
 			}
 		};
 		
