@@ -17,7 +17,11 @@ import model.Order;
 
 public class OrderController
 {
-	LinkedList<Order> orderList = new LinkedList<Order>();
+	public LinkedList<Order> orderList;
+	
+	OrderController(){
+		orderList = new LinkedList<Order>();
+	}
 	
 	public void appendOrder(Order newOrder)
 	{

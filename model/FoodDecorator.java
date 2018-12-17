@@ -13,6 +13,5 @@ package model;
 
 public abstract class FoodDecorator extends Food
 {
-	public abstract void addTopping();
-	public abstract void setFlavor();
+	String myStr;
 }

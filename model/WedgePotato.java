@@ -13,13 +13,13 @@ package model;
 
 public class WedgePotato extends ToppingDecorator
 {
-	public void addTopping()
-	{
-	
+	WedgePotato(){
+		myStr = "WedgePotato";
 	}
 	
-	public void setFlavor()
+	public void addTopping()
 	{
-	
+		myToppings.add(myStr);
+		price += 500;
 	}
 }

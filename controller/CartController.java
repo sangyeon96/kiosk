@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.LinkedList;
+
+import model.Order;
 import model.SelectedFood;
 
 //
@@ -15,20 +18,27 @@ import model.SelectedFood;
 
 public class CartController
 {
-	public SelectedFood[] currentCart;
+	LinkedList<SelectedFood	> currentCart = new LinkedList<SelectedFood>();
 	
-	public void addSelectedFood()
+	public void addSelectedFood(SelectedFood newSelectedFood)
 	{
-	
+		currentCart.add(newSelectedFood);
 	}
 	
-	public void deleteSelectedFood()
+	public void deleteSelectedFood(SelectedFood deleteSelected)
 	{
-	
+		currentCart.remove(deleteSelected);
 	}
 	
-	public void modifySelectedFood()
+	public void modifySelectedFood(SelectedFood modifySelected)
 	{
+		int whereModify;
+		whereModify = currentCart.indexOf(modifySelected);
 	
+		SelectedFood tmpSelectedFood = currentCart.get(whereModify);
+		
+		/*
+		 * the modifying logic will be updated, with view interaction
+		 */
 	}
 }

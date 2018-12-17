@@ -13,13 +13,12 @@ package model;
 
 public class Spicy extends FlavorDecorator
 {
-	public void addTopping()
-	{
-	
+	Spicy(){
+		myStr = "Spicy";
 	}
 	
 	public void setFlavor()
 	{
-	
+		this.flavor = myStr;
 	}
 }

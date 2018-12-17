@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.LinkedList;
+
+import model.Order;
 import model.SelectedFood;
 
 //
@@ -15,8 +18,19 @@ import model.SelectedFood;
 
 public class Buy implements Command
 {
-	public SelectedFood[] finalCart;
-	public OrderController controlOrder;
+	public OrderController 			controlOrder;
+	public LinkedList<SelectedFood> finalCart;
+	public LinkedList<Order> 		allOrder;
+	public Purchase					controlPurchase;
+	
+	Buy(){
+		finalCart 		= new LinkedList<SelectedFood>();
+		controlOrder 	= new OrderController();
+		controlPurchase = new Purchase();
+		
+		// get orderList head addr to reduce approach time
+		allOrder = controlOrder.orderList;
+	}
 	
 	public void putInCart()
 	{

@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.LinkedList;
+
 import model.Payment;
 
 //
@@ -14,8 +16,12 @@ import model.Payment;
 //
 
 public class PaymentController
-{
-	public Payment[] paymentList;
+{	
+	public LinkedList<Payment> paymentList;
+	
+	PaymentController(){
+		paymentList = new LinkedList<Payment>();
+	}
 	
 	public void addPayment()
 	{

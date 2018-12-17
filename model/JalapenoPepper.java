@@ -13,13 +13,13 @@ package model;
 
 public class JalapenoPepper extends ToppingDecorator
 {
-	public void addTopping()
-	{
-	
+	JalapenoPepper(){
+		myStr = "JalapenoPepper";
 	}
 	
-	public void setFlavor()
+	public void addTopping()
 	{
-	
+		myToppings.add(myStr);
+		price += 500;
 	}
 }

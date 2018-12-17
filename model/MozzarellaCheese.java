@@ -13,13 +13,13 @@ package model;
 
 public class MozzarellaCheese extends ToppingDecorator
 {
-	public void addTopping()
-	{
-	
+	MozzarellaCheese(){
+		myStr = "MozzarellaCheese";
 	}
 	
-	public void setFlavor()
+	public void addTopping()
 	{
-	
+		myToppings.add(myStr);
+		price += 1000;
 	}
 }

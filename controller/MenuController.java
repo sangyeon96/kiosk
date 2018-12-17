@@ -1,6 +1,9 @@
 package controller;
 
+import java.util.LinkedList;
+
 import model.Food;
+import model.SelectedFood;
 
 //
 //
@@ -15,31 +18,42 @@ import model.Food;
 
 public class MenuController implements Command
 {
-	public Food[] menu;
+	private LinkedList<Food> menu;
 	
-	public void getMenu()
+	MenuController(){
+		menu = new LinkedList<Food>();
+	}
+	
+	public LinkedList<Food> getMenu()
 	{
-	
+		return this.menu;
 	}
 	
 	public void setMenu()
 	{
-	
+		
 	}
 	
-	public void modifyFood()
+	public void modifyFood(Food modifyFood)
 	{
+		int whereModify;
+		whereModify = menu.indexOf(modifyFood);
 	
+		Food tmpFood = menu.get(whereModify);
+		
+		/*
+		 * the modifying logic will be updated, with view interaction
+		 */
 	}
 	
-	public void addFood()
+	public void addFood(Food newFood)
 	{
-	
+		menu.addLast(newFood);
 	}
 	
-	public void deleteFood()
+	public void deleteFood(Food deleteFood)
 	{
-	
+		menu.remove(deleteFood);
 	}
 
 	@Override
