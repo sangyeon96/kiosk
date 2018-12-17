@@ -13,8 +13,11 @@ package model;
 
 public class Mild extends FlavorDecorator
 {	
-	Mild(){
+	public Mild(Food food){
+		this.myToppings = food.myToppings;
+		this.price = food.price;
 		myStr = "Mild";
+		setFlavor();
 	}
 	
 	public void setFlavor()

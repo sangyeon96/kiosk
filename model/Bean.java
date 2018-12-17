@@ -13,8 +13,9 @@ package model;
 
 public class Bean extends ToppingDecorator
 {
-	Bean(Food food){
+	public Bean(Food food){
 		this.myToppings = food.myToppings;
+		this.price = food.price;
 		myStr = "Bean";
 		addTopping();
 	}

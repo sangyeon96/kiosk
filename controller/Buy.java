@@ -2,6 +2,7 @@ package controller;
 
 import java.util.LinkedList;
 
+import model.Food;
 import model.Order;
 import model.SelectedFood;
 
@@ -41,6 +42,7 @@ public class Buy implements Command
 		 *  4. 2-3 will be repeated, with adding them to currentCart
 		 *  5. if the purchease button is pushed, the currentCart will be finalCart in Buy, and this method will be done.
 		 */
+		Food toPutIn = new Food();
 	}
 	
 	public boolean purchase(SelectedFood[] finalCart)

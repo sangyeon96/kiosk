@@ -13,8 +13,9 @@ package model;
 
 public class DoubleCheese extends ToppingDecorator
 {
-	DoubleCheese(Food food){
+	public DoubleCheese(Food food){
 		this.myToppings = food.myToppings;
+		this.price = food.price;
 		myStr = "DoubleCheese";
 		addTopping();
 	}

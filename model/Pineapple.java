@@ -13,8 +13,9 @@ package model;
 
 public class Pineapple extends ToppingDecorator
 {
-	Pineapple(Food food){
+	public Pineapple(Food food){
 		this.myToppings = food.myToppings;
+		this.price = food.price;
 		myStr = "Pineapple";
 		addTopping();
 	}
