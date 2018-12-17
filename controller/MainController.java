@@ -32,6 +32,11 @@ public class MainController {
 		
 		// set Food Data
 		Food[] foodArr = new Food[9];
+		
+		for(int i = 0; i < 9; i++) {
+			foodArr[i] = new Food();
+		}
+		
 		foodArr[0].name = "Chicken Burrito";
 		foodArr[0].price = 3000;
 		foodArr[1].name = "Beef Burrito";
