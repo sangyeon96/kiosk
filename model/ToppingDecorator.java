@@ -13,12 +13,6 @@ package model;
 
 public abstract class ToppingDecorator extends FoodDecorator
 {
-	public String name;
 	public int price;
-	
-	public void addTopping()
-	{
-	
-	}
-
+	public abstract void addTopping();
 }

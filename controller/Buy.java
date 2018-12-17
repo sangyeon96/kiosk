@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.LinkedList;
+
+import model.Order;
 import model.SelectedFood;
 
 //
@@ -15,16 +18,40 @@ import model.SelectedFood;
 
 public class Buy implements Command
 {
-	public SelectedFood[] finalCart;
-	public OrderController controlOrder;
+	public OrderController 			controlOrder;
+	public LinkedList<SelectedFood> finalCart;
+	public LinkedList<Order> 		allOrder;
+	public Purchase					controlPurchase;
+	
+	Buy(){
+		finalCart 		= new LinkedList<SelectedFood>();
+		controlOrder 	= new OrderController();
+		controlPurchase = new Purchase();
+		
+		// get orderList head addr to reduce approach time
+		allOrder = controlOrder.orderList;
+	}
 	
 	public void putInCart()
 	{
-	
+		/*  if the put in button selected in main, this method will be started.
+		 *  1. choose one food in view, others' checkbox will be disabled.
+		 *  2. choose toppings and flavor about the food.
+		 *  3. click put in button and the food with toppings and flavor will be a selectedFood object
+		 *  4. 2-3 will be repeated, with adding them to currentCart
+		 *  5. if the purchease button is pushed, the currentCart will be finalCart in Buy, and this method will be done.
+		 */
 	}
 	
 	public boolean purchase(SelectedFood[] finalCart)
 	{
+		/*
+		 *  1. choose payment
+		 *  2. send purchase Req to external system
+		 *  3. get Req from external system
+		 *  4. make Order object and put it in orderList
+		 */
+		
 		return true;
 	}
 

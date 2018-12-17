@@ -13,13 +13,12 @@ package model;
 
 public class PeanutButter extends ToppingDecorator
 {
-	public void addTopping()
-	{
-	
+	PeanutButter(){
+		myStr = "PeanutButter";
 	}
 	
-	public void setFlavor()
+	public void addTopping()
 	{
-	
+		myToppings.add(myStr);
 	}
 }

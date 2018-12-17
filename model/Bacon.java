@@ -13,13 +13,12 @@ package model;
 
 public class Bacon extends ToppingDecorator
 {
-	public void addTopping()
-	{
-	
+	Bacon(){
+		myStr = "Bacon";
 	}
 	
-	public void setFlavor()
+	public void addTopping()
 	{
-	
+		myToppings.add(myStr);
 	}
 }
