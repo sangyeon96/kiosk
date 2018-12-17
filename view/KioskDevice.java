@@ -22,36 +22,36 @@ import java.awt.Color;
 
 public class KioskDevice extends JFrame {
 
-	private JPanel contentPane;
+	public JPanel contentPane;
 	
-	private JPanel panelFood;
-	private JLabel lblFood;
-	private JCheckBox[] chckbxMenu = new JCheckBox[9];
-	private JLabel lblChickenBurritoPrice, lblBeefBurritoPrice, lblMixBurritoPrice, lblFrenchFriedPrice, lblOnionRingPrice, lblNachoChipsPrice, lblCokePrice, lblSodaPrice, lblBeerPrice;	
+	public JPanel panelFood;
+	public JLabel lblFood;
+	public JCheckBox[] chckbxMenu = new JCheckBox[9];
+	public JLabel lblChickenBurritoPrice, lblBeefBurritoPrice, lblMixBurritoPrice, lblFrenchFriedPrice, lblOnionRingPrice, lblNachoChipsPrice, lblCokePrice, lblSodaPrice, lblBeerPrice;	
 	
-	private JPanel panelFlavor;
-	private JLabel lblFlavor;
-	private JCheckBox[] chckbxFlavor = new JCheckBox[3];
+	public JPanel panelFlavor;
+	public JLabel lblFlavor;
+	public JCheckBox[] chckbxFlavor = new JCheckBox[3];
 	
-	private JPanel panelBurritoTopping;
-	private JLabel lblBurritoTopping;
-	private JCheckBox[] chckbxBurritoTopping = new JCheckBox[9];
-	private JLabel lblWedgePotatoPrice, lblDoubleCheesePrice, lblMozzarellaCheesePrice, lblJalapenoPepperPrice, lblPineapplePrice, lblShrimpPrice, lblSausagePrice, lblFishCutletPrice, lblBeanPrice;
+	public JCheckBox[] chckbxTopping = new JCheckBox[14];
 	
-	private JPanel panelFrenchFriedTopping;
-	private JLabel lblFrenchFriedTopping;
-	private JCheckBox[] chckbxFrenchFriedTopping = new JCheckBox[2];
-	private JLabel lblBaconPrice, lblCheezePrice;
+	public JPanel panelBurritoTopping;
+	public JLabel lblBurritoTopping;
+	public JLabel lblWedgePotatoPrice, lblDoubleCheesePrice, lblMozzarellaCheesePrice, lblJalapenoPepperPrice, lblPineapplePrice, lblShrimpPrice, lblSausagePrice, lblFishCutletPrice, lblBeanPrice;
+	
+	public JPanel panelFrenchFriedTopping;
+	public JLabel lblFrenchFriedTopping;
+	public JLabel lblBaconPrice, lblCheezePrice;
 
-	private JPanel panelNachoChipsTopping;
-	private JLabel lblNachoChipsTopping;
-	private JCheckBox[] chckbxNachoChipsTopping = new JCheckBox[3];
-	private JLabel lblGuacamolePrice, lblTomatoPrice, lblPeanutButterPrice;
+	public JPanel panelNachoChipsTopping;
+	public JLabel lblNachoChipsTopping;
+	public JLabel lblGuacamolePrice, lblTomatoPrice, lblPeanutButterPrice;
 	
-	private JButton btnAdminLogin;
-	private JButton btnPutInCart;
+	public JButton btnAdminLogin;
+	public JButton btnPutInCart;
+	private JButton btnPurchase;
 	
-	private int i;
+	public int i;
 	
 	/**
 	 * Launch the application.
@@ -210,35 +210,35 @@ public class KioskDevice extends JFrame {
 		lblBurritoTopping.setBounds(60, 13, 107, 16);
 		panelBurritoTopping.add(lblBurritoTopping);
 		
-		chckbxBurritoTopping[0] = new JCheckBox("Wedge Potato");
-		chckbxBurritoTopping[0].setBounds(6, 40, 117, 23);
+		chckbxTopping[0] = new JCheckBox("Wedge Potato");
+		chckbxTopping[0].setBounds(6, 40, 117, 23);
 		
-		chckbxBurritoTopping[1] = new JCheckBox("Double Cheese");
-		chckbxBurritoTopping[1].setBounds(6, 65, 128, 23);
+		chckbxTopping[1] = new JCheckBox("Double Cheese");
+		chckbxTopping[1].setBounds(6, 65, 128, 23);
 		
-		chckbxBurritoTopping[2] = new JCheckBox("Mozzarella Cheese");
-		chckbxBurritoTopping[2].setBounds(6, 90, 148, 23);
+		chckbxTopping[2] = new JCheckBox("Mozzarella Cheese");
+		chckbxTopping[2].setBounds(6, 90, 148, 23);
 		
-		chckbxBurritoTopping[3] = new JCheckBox("Jalapeno Pepper");
-		chckbxBurritoTopping[3].setBounds(6, 115, 131, 23);
+		chckbxTopping[3] = new JCheckBox("Jalapeno Pepper");
+		chckbxTopping[3].setBounds(6, 115, 131, 23);
 		
-		chckbxBurritoTopping[4] = new JCheckBox("Pineapple");
-		chckbxBurritoTopping[4].setBounds(6, 140, 97, 23);
+		chckbxTopping[4] = new JCheckBox("Pineapple");
+		chckbxTopping[4].setBounds(6, 140, 97, 23);
 		
-		chckbxBurritoTopping[5] = new JCheckBox("Shrimp");
-		chckbxBurritoTopping[5].setBounds(6, 165, 76, 23);
+		chckbxTopping[5] = new JCheckBox("Shrimp");
+		chckbxTopping[5].setBounds(6, 165, 76, 23);
 		
-		chckbxBurritoTopping[6] = new JCheckBox("Sausage");
-		chckbxBurritoTopping[6].setBounds(6, 190, 97, 23);
+		chckbxTopping[6] = new JCheckBox("Sausage");
+		chckbxTopping[6].setBounds(6, 190, 97, 23);
 		
-		chckbxBurritoTopping[7] = new JCheckBox("Fish Cutlet");
-		chckbxBurritoTopping[7].setBounds(6, 215, 117, 23);
+		chckbxTopping[7] = new JCheckBox("Fish Cutlet");
+		chckbxTopping[7].setBounds(6, 215, 117, 23);
 		
-		chckbxBurritoTopping[8] = new JCheckBox("Bean");
-		chckbxBurritoTopping[8].setBounds(6, 240, 67, 23);
+		chckbxTopping[8] = new JCheckBox("Bean");
+		chckbxTopping[8].setBounds(6, 240, 67, 23);
 		
 		for(i = 0; i < 9; i++) {
-			panelBurritoTopping.add(chckbxBurritoTopping[i]);
+			panelBurritoTopping.add(chckbxTopping[i]);
 		}
 		
 		lblWedgePotatoPrice = new JLabel("500");
@@ -289,14 +289,14 @@ public class KioskDevice extends JFrame {
 		lblFrenchFriedTopping.setBounds(44, 12, 134, 16);
 		panelFrenchFriedTopping.add(lblFrenchFriedTopping);
 		
-		chckbxFrenchFriedTopping[0] = new JCheckBox("Bacon");
-		chckbxFrenchFriedTopping[0].setBounds(6, 40, 117, 23);
+		chckbxTopping[9] = new JCheckBox("Bacon");
+		chckbxTopping[9].setBounds(6, 40, 117, 23);
 		
-		chckbxFrenchFriedTopping[1] = new JCheckBox("Cheeze");
-		chckbxFrenchFriedTopping[1].setBounds(6, 65, 128, 23);
+		chckbxTopping[10] = new JCheckBox("Cheeze");
+		chckbxTopping[10].setBounds(6, 65, 128, 23);
 		
-		for(i = 0; i < 2; i++) {
-			panelFrenchFriedTopping.add(chckbxFrenchFriedTopping[i]);
+		for(i = 9; i < 11; i++) {
+			panelFrenchFriedTopping.add(chckbxTopping[i]);
 		}
 		
 		lblBaconPrice = new JLabel("2000");
@@ -319,17 +319,17 @@ public class KioskDevice extends JFrame {
 		lblNachoChipsTopping.setBounds(39, 12, 142, 16);
 		panelNachoChipsTopping.add(lblNachoChipsTopping);
 		
-		chckbxNachoChipsTopping[0] = new JCheckBox("Guacamole");
-		chckbxNachoChipsTopping[0].setBounds(6, 40, 117, 23);
+		chckbxTopping[11] = new JCheckBox("Guacamole");
+		chckbxTopping[11].setBounds(6, 40, 117, 23);
 		
-		chckbxNachoChipsTopping[1] = new JCheckBox("Tomato");
-		chckbxNachoChipsTopping[1].setBounds(6, 65, 128, 23);
+		chckbxTopping[12] = new JCheckBox("Tomato");
+		chckbxTopping[12].setBounds(6, 65, 128, 23);
 		
-		chckbxNachoChipsTopping[2] = new JCheckBox("Peanut Butter");
-		chckbxNachoChipsTopping[2].setBounds(6, 90, 148, 23);
+		chckbxTopping[13] = new JCheckBox("Peanut Butter");
+		chckbxTopping[13].setBounds(6, 90, 148, 23);
 		
-		for(i = 0; i < 3; i++) {
-			panelNachoChipsTopping.add(chckbxNachoChipsTopping[i]);
+		for(i = 11; i < 14; i++) {
+			panelNachoChipsTopping.add(chckbxTopping[i]);
 		}
 		
 		lblGuacamolePrice = new JLabel("1500");
@@ -349,7 +349,7 @@ public class KioskDevice extends JFrame {
 		btnPutInCart.setBounds(15, 330, 117, 29);
 		contentPane.add(btnPutInCart);
 		
-		JButton btnPurchase = new JButton("Purchase");
+		btnPurchase = new JButton("Purchase");
 		btnPurchase.setBounds(122, 330, 117, 29);
 		contentPane.add(btnPurchase);
 	}
