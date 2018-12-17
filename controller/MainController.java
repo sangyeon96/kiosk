@@ -1148,88 +1148,46 @@ public class MainController {
 			public void actionPerformed(ActionEvent e) {
 				switch(currState) {
 				case "Bacon":
-					bacon.name = doneSelect.name;
-					bacon.price = doneSelect.price;
-					bacon.flavor = doneSelect.flavor;
-					bacon.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(bacon);
 					break;
 				case "Bean":
-					bean.name = doneSelect.name; 
-					bean.price = doneSelect.price;
-					bean.flavor = doneSelect.flavor;
-					bean.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(bean);
 					break;
 				case "Cheeze":
-					cheeze.name = doneSelect.name; 
-					cheeze.price = doneSelect.price;
-					cheeze.flavor = doneSelect.flavor;
-					cheeze.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(cheeze);
 					break;
 				case "Double Cheese":
-					doublecheese.name = doneSelect.name; 
-					doublecheese.price = doneSelect.price;
-					doublecheese.flavor = doneSelect.flavor;
-					doublecheese.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(doublecheese);
 					break;
 				case "Fish Cutlet":
-					fishcutlet.name = doneSelect.name; 
-					fishcutlet.price = doneSelect.price;
-					fishcutlet.flavor = doneSelect.flavor;
-					fishcutlet.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(fishcutlet);
 					break;
 				case "Guacamole":
-					guacamole.name = doneSelect.name; 
-					guacamole.price = doneSelect.price;
-					guacamole.flavor = doneSelect.flavor;
-					guacamole.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(guacamole);
 					break;
 				case "Jalapeno Pepper":
-					jalapenopepper.name = doneSelect.name; 
-					jalapenopepper.price = doneSelect.price;
-					jalapenopepper.flavor = doneSelect.flavor;
-					jalapenopepper.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(jalapenopepper);
 					break;
 				case "Mozzarella Cheese":
-					mozzarellacheese.name = doneSelect.name; 
-					mozzarellacheese.price = doneSelect.price;
-					mozzarellacheese.flavor = doneSelect.flavor;
-					mozzarellacheese.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(mozzarellacheese);
 					break;
 				case "Peanut Butter":
-					peanutbutter.name = doneSelect.name; 
-					peanutbutter.price = doneSelect.price;
-					peanutbutter.flavor = doneSelect.flavor;
-					peanutbutter.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(peanutbutter);
 					break;
 				case "Pineapple":
-					pineapple.name = doneSelect.name; 
-					pineapple.price = doneSelect.price;
-					pineapple.flavor = doneSelect.flavor;
-					pineapple.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(pineapple);
 					break;
 				case "Sausage":
-					sausage.name = doneSelect.name; 
-					sausage.price = doneSelect.price;
-					sausage.flavor = doneSelect.flavor;
-					sausage.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(sausage);
 					break;
 				case "Shrimp":
-					shrimp.name = doneSelect.name; 
-					shrimp.price = doneSelect.price;
-					shrimp.flavor = doneSelect.flavor;
-					shrimp.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(shrimp);
 					break;
 				case "Tomato":
-					tomato.name = doneSelect.name; 
-					tomato.price = doneSelect.price;
-					tomato.flavor = doneSelect.flavor;
-					tomato.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(tomato);
 					break;
 				case "Wedge Potato":
-					wedgepotato.name = doneSelect.name; 
-					wedgepotato.price = doneSelect.price;
-					wedgepotato.flavor = doneSelect.flavor;
-					wedgepotato.myToppings = doneSelect.selectedTopping;
+					doneSelect = buyController.putInCart(wedgepotato);
 					break;
 				}
 				cartController.addSelectedFood(doneSelect);
@@ -1238,7 +1196,31 @@ public class MainController {
 			}
 		};
 		
+		ActionListener cartCountPlus = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int whereModify;
+				whereModify = cartController.currentCart.indexOf(this panel's SelectedFood);
+			
+				SelectedFood tmpSelectedFood = currentCart.get(whereModify);
+				tmpSelectedFood.count++;
+			}
+		};
 		
+		ActionListener cartCountMinus = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int whereModify;
+				whereModify = cartController.currentCart.indexOf(this panel's SelectedFood);
+			
+				SelectedFood tmpSelectedFood = currentCart.get(whereModify);
+				tmpSelectedFood.count--;
+			}
+		};
+		
+		ActionListener purchase = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		};
 		
 		// add button listener regist codes here
 	}
