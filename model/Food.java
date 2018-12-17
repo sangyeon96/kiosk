@@ -21,7 +21,7 @@ public class Food
 	public LinkedList<String> availableTopping;
 	public LinkedList<String> myToppings;
 	
-	Food(){
+	public Food(){
 		myToppings 		 = new LinkedList<String>();
 		availableTopping = new LinkedList<String>();
 	}

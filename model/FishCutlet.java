@@ -13,8 +13,10 @@ package model;
 
 public class FishCutlet extends ToppingDecorator
 {
-	FishCutlet(){
+	FishCutlet(Food food){
+		this.myToppings = food.myToppings;
 		myStr = "FishCutlet";
+		addTopping();
 	}
 	
 	public void addTopping()
