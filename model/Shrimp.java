@@ -13,8 +13,10 @@ package model;
 
 public class Shrimp extends ToppingDecorator
 {
-	Shrimp(){
+	Shrimp(Food food){
+		this.myToppings = food.myToppings;
 		myStr = "Shrimp";
+		addTopping();
 	}
 	
 	public void addTopping()

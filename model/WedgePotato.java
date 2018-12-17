@@ -13,8 +13,10 @@ package model;
 
 public class WedgePotato extends ToppingDecorator
 {
-	WedgePotato(){
+	WedgePotato(Food food){
+		this.myToppings = food.myToppings;
 		myStr = "WedgePotato";
+		addTopping();
 	}
 	
 	public void addTopping()
