@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.LinkedList;
+
 import model.Order;
 
 //
@@ -15,15 +17,15 @@ import model.Order;
 
 public class OrderController
 {
-	public Order[] orderList;
+	LinkedList<Order> orderList = new LinkedList<Order>();
 	
-	public void appendOrder()
+	public void appendOrder(Order newOrder)
 	{
-	
+		orderList.addLast(newOrder);
 	}
 	
-	public void removeOrder()
+	public void removeOrder(Order refundOrder)
 	{
-	
+		orderList.remove(refundOrder);
 	}
 }
