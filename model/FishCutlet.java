@@ -13,8 +13,9 @@ package model;
 
 public class FishCutlet extends ToppingDecorator
 {
-	FishCutlet(Food food){
+	public FishCutlet(Food food){
 		this.myToppings = food.myToppings;
+		this.price = food.price;
 		myStr = "FishCutlet";
 		addTopping();
 	}

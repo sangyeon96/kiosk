@@ -13,8 +13,9 @@ package model;
 
 public class Sausage extends ToppingDecorator
 {
-	Sausage(Food food){
+	public Sausage(Food food){
 		this.myToppings = food.myToppings;
+		this.price = food.price;
 		myStr = "Sausage";
 		addTopping();
 	}

@@ -18,7 +18,7 @@ import model.SelectedFood;
 
 public class CartController
 {
-	LinkedList<SelectedFood	> currentCart = new LinkedList<SelectedFood>();
+	LinkedList<SelectedFood> currentCart = new LinkedList<SelectedFood>();
 	
 	public void addSelectedFood(SelectedFood newSelectedFood)
 	{

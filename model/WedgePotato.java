@@ -13,8 +13,9 @@ package model;
 
 public class WedgePotato extends ToppingDecorator
 {
-	WedgePotato(Food food){
+	public WedgePotato(Food food){
 		this.myToppings = food.myToppings;
+		this.price = food.price;
 		myStr = "WedgePotato";
 		addTopping();
 	}

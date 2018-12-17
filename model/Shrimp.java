@@ -13,8 +13,9 @@ package model;
 
 public class Shrimp extends ToppingDecorator
 {
-	Shrimp(Food food){
+	public Shrimp(Food food){
 		this.myToppings = food.myToppings;
+		this.price = food.price;
 		myStr = "Shrimp";
 		addTopping();
 	}
