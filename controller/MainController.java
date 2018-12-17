@@ -17,6 +17,7 @@ import model.MozzarellaCheese;
 import model.PeanutButter;
 import model.Pineapple;
 import model.Sausage;
+import model.SelectedFood;
 import model.Shrimp;
 import model.Spicy;
 import model.Tomato;
@@ -51,6 +52,7 @@ public class MainController {
 		foodArr[8].price = 2000;
 		
 		Buy buyController = new Buy();
+		CartController cartController = new CartController();
 		
 		// add Foods to menu
 		MenuController menuController = new MenuController();
@@ -1139,6 +1141,104 @@ public class MainController {
 				}
 			}
 		};
+		
+		SelectedFood doneSelect = new SelectedFood();
+		
+		ActionListener PutinListener = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switch(currState) {
+				case "Bacon":
+					bacon.name = doneSelect.name;
+					bacon.price = doneSelect.price;
+					bacon.flavor = doneSelect.flavor;
+					bacon.myToppings = doneSelect.selectedTopping;
+					break;
+				case "Bean":
+					bean.name = doneSelect.name; 
+					bean.price = doneSelect.price;
+					bean.flavor = doneSelect.flavor;
+					bean.myToppings = doneSelect.selectedTopping;
+					break;
+				case "Cheeze":
+					cheeze.name = doneSelect.name; 
+					cheeze.price = doneSelect.price;
+					cheeze.flavor = doneSelect.flavor;
+					cheeze.myToppings = doneSelect.selectedTopping;
+					break;
+				case "Double Cheese":
+					doublecheese.name = doneSelect.name; 
+					doublecheese.price = doneSelect.price;
+					doublecheese.flavor = doneSelect.flavor;
+					doublecheese.myToppings = doneSelect.selectedTopping;
+					break;
+				case "Fish Cutlet":
+					fishcutlet.name = doneSelect.name; 
+					fishcutlet.price = doneSelect.price;
+					fishcutlet.flavor = doneSelect.flavor;
+					fishcutlet.myToppings = doneSelect.selectedTopping;
+					break;
+				case "Guacamole":
+					guacamole.name = doneSelect.name; 
+					guacamole.price = doneSelect.price;
+					guacamole.flavor = doneSelect.flavor;
+					guacamole.myToppings = doneSelect.selectedTopping;
+					break;
+				case "Jalapeno Pepper":
+					jalapenopepper.name = doneSelect.name; 
+					jalapenopepper.price = doneSelect.price;
+					jalapenopepper.flavor = doneSelect.flavor;
+					jalapenopepper.myToppings = doneSelect.selectedTopping;
+					break;
+				case "Mozzarella Cheese":
+					mozzarellacheese.name = doneSelect.name; 
+					mozzarellacheese.price = doneSelect.price;
+					mozzarellacheese.flavor = doneSelect.flavor;
+					mozzarellacheese.myToppings = doneSelect.selectedTopping;
+					break;
+				case "Peanut Butter":
+					peanutbutter.name = doneSelect.name; 
+					peanutbutter.price = doneSelect.price;
+					peanutbutter.flavor = doneSelect.flavor;
+					peanutbutter.myToppings = doneSelect.selectedTopping;
+					break;
+				case "Pineapple":
+					pineapple.name = doneSelect.name; 
+					pineapple.price = doneSelect.price;
+					pineapple.flavor = doneSelect.flavor;
+					pineapple.myToppings = doneSelect.selectedTopping;
+					break;
+				case "Sausage":
+					sausage.name = doneSelect.name; 
+					sausage.price = doneSelect.price;
+					sausage.flavor = doneSelect.flavor;
+					sausage.myToppings = doneSelect.selectedTopping;
+					break;
+				case "Shrimp":
+					shrimp.name = doneSelect.name; 
+					shrimp.price = doneSelect.price;
+					shrimp.flavor = doneSelect.flavor;
+					shrimp.myToppings = doneSelect.selectedTopping;
+					break;
+				case "Tomato":
+					tomato.name = doneSelect.name; 
+					tomato.price = doneSelect.price;
+					tomato.flavor = doneSelect.flavor;
+					tomato.myToppings = doneSelect.selectedTopping;
+					break;
+				case "Wedge Potato":
+					wedgepotato.name = doneSelect.name; 
+					wedgepotato.price = doneSelect.price;
+					wedgepotato.flavor = doneSelect.flavor;
+					wedgepotato.myToppings = doneSelect.selectedTopping;
+					break;
+				}
+				cartController.addSelectedFood(doneSelect);
+				
+				// add cart view visible code
+			}
+		};
+		
+		
 		
 		// add button listener regist codes here
 	}
