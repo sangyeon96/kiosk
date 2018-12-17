@@ -6,7 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+import java.awt.Color;
 
 //
 //
@@ -25,23 +26,32 @@ public class KioskDevice extends JFrame {
 	
 	private JPanel panelFood;
 	private JLabel lblFood;
-	private JLabel lblChickenBurrito, lblBeefBurrito, lblMixBurrito, lblFrenchFried, lblOnionRing, lblNachoChips, lblSoda, lblBeer, lblCoke;
-	private JTextField chickenCntTextField, beefCntTextField, mixCntTextField, friedCntTextField, ringCntTextField, nachoCntTextField, cokeCntTextField, sodaCntTextField, beerCntTextField;
-	private JButton chickenUpBtn, beefUpBtn, mixUpBtn, friedUpBtn, ringUpBtn, nachoUpBtn, cokeUpBtn, sodaUpBtn, beerUpBtn;
-	private JButton chickenDownBtn, beefDownBtn, mixDownBtn, friedDownBtn, ringDownBtn, nachoDownBtn, cokeDownBtn, sodaDownBtn, beerDownBtn;
+	private JCheckBox[] chckbxMenu = new JCheckBox[9];
+	private JLabel lblChickenBurritoPrice, lblBeefBurritoPrice, lblMixBurritoPrice, lblFrenchFriedPrice, lblOnionRingPrice, lblNachoChipsPrice, lblCokePrice, lblSodaPrice, lblBeerPrice;	
 	
 	private JPanel panelFlavor;
 	private JLabel lblFlavor;
-	private JLabel lblChickenMild, lblChickenSpicy, lblChickenVerySpicy, lblBeefMild, lblBeefSpicy, lblBeefVerySpicy, lblMixMild, lblMixSpicy, lblMixVerySpicy;
-	private JTextField chickenMildCntTextField, chickenSpicyCntTextField, chickenVerySpicyCntTextField, beefMildCntTextField, beefSpicyCntTextField, beefVerySpicyCntTextField, mixMildCntTextField, mixSpicyCntTextField, mixVerySpicyCntTextField;
-	private JButton chickenMildUpBtn, chickenSpicyUpBtn, chickenVerySpicyUpBtn, beefMildUpBtn, beefSpicyUpBtn, beefVerySpicyUpBtn, mixMildUpBtn, mixSpicyUpBtn, mixVerySpicyUpBtn;
-	private JButton chickenMildDownBtn, chickenSpicyDownBtn, chickenVerySpicyDownBtn, beefMildDownBtn, beefSpicyDownBtn, beefVerySpicyDownBtn, mixMildDownBtn, mixSpicyDownBtn, mixVerySpicyDownBtn;
+	private JCheckBox[] chckbxFlavor = new JCheckBox[3];
 	
-	private JPanel panelTopping;
-	private JLabel lblTopping;
+	private JPanel panelBurritoTopping;
+	private JLabel lblBurritoTopping;
+	private JCheckBox[] chckbxBurritoTopping = new JCheckBox[9];
+	private JLabel lblWedgePotatoPrice, lblDoubleCheesePrice, lblMozzarellaCheesePrice, lblJalapenoPepperPrice, lblPineapplePrice, lblShrimpPrice, lblSausagePrice, lblFishCutletPrice, lblBeanPrice;
+	
+	private JPanel panelFrenchFriedTopping;
+	private JLabel lblFrenchFriedTopping;
+	private JCheckBox[] chckbxFrenchFriedTopping = new JCheckBox[2];
+	private JLabel lblBaconPrice, lblCheezePrice;
 
+	private JPanel panelNachoChipsTopping;
+	private JLabel lblNachoChipsTopping;
+	private JCheckBox[] chckbxNachoChipsTopping = new JCheckBox[3];
+	private JLabel lblGuacamolePrice, lblTomatoPrice, lblPeanutButterPrice;
+	
 	private JButton btnAdminLogin;
-	private JButton btnOrder;
+	private JButton btnPutInCart;
+	
+	private int i;
 	
 	/**
 	 * Launch the application.
@@ -58,7 +68,7 @@ public class KioskDevice extends JFrame {
 			}
 		});
 	}
-
+	
 	public void showOrderResult()
 	{
 	
@@ -75,7 +85,7 @@ public class KioskDevice extends JFrame {
 	public KioskDevice() {
 		
 		setTitle("Kiosk Device");
-		setBounds(100, 100, 784, 439);
+		setBounds(100, 100, 588, 387);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -84,380 +94,263 @@ public class KioskDevice extends JFrame {
 		setContentPane(contentPane);
 		
 		btnAdminLogin = new JButton("Admin Login");
-		btnAdminLogin.setBounds(642, 6, 117, 29);
+		btnAdminLogin.setBounds(456, 10, 117, 29);
 		contentPane.add(btnAdminLogin);
 		
+		//Food Panel
 		panelFood = new JPanel();
+		panelFood.setBackground(Color.WHITE);
 		panelFood.setLayout(null);
-		panelFood.setBounds(19, 44, 278, 299);
+		panelFood.setBounds(19, 44, 193, 274);
 		contentPane.add(panelFood);
 		
 		lblFood = new JLabel("Menu");
-		lblFood.setBounds(113, 10, 48, 16);
+		lblFood.setBounds(80, 13, 48, 16);
 		panelFood.add(lblFood);
 		
-		lblChickenBurrito = new JLabel("Chicken Burrito(3000won)");
-		lblChickenBurrito.setBounds(6, 38, 175, 16);
-		panelFood.add(lblChickenBurrito);
+		chckbxMenu[0] = new JCheckBox("Chicken Burrito");
+		chckbxMenu[0].setBounds(6, 40, 129, 23);
 		
-		lblBeefBurrito = new JLabel("Beef Burrito(3000won)");
-		lblBeefBurrito.setBounds(6, 66, 154, 16);
-		panelFood.add(lblBeefBurrito);
+		chckbxMenu[1] = new JCheckBox("Beef Burrito");
+		chckbxMenu[1].setBounds(6, 65, 104, 23);
 		
-		lblMixBurrito = new JLabel("Mix Burrito(3000won)");
-		lblMixBurrito.setBounds(6, 94, 140, 16);
-		panelFood.add(lblMixBurrito);
+		chckbxMenu[2] = new JCheckBox("Mix Burrito");
+		chckbxMenu[2].setBounds(6, 90, 104, 23);
 		
-		lblFrenchFried = new JLabel("French Fried(2000won)");
-		lblFrenchFried.setBounds(6, 122, 154, 16);
-		panelFood.add(lblFrenchFried);
+		chckbxMenu[3] = new JCheckBox("French Fried");
+		chckbxMenu[3].setBounds(6, 115, 116, 23);
 		
-		lblOnionRing = new JLabel("Onion Ring(2000won)");
-		lblOnionRing.setBounds(6, 150, 140, 16);
-		panelFood.add(lblOnionRing);
+		chckbxMenu[4] = new JCheckBox("Onion Ring");
+		chckbxMenu[4].setBounds(6, 140, 104, 23);
 		
-		lblNachoChips = new JLabel("Nacho Chips(2000won)");
-		lblNachoChips.setBounds(6, 178, 154, 16);
-		panelFood.add(lblNachoChips);
+		chckbxMenu[5] = new JCheckBox("Nacho Chips");
+		chckbxMenu[5].setBounds(6, 165, 116, 23);
 		
-		lblCoke = new JLabel("Coke(1000won)");
-		lblCoke.setBounds(6, 206, 102, 16);
-		panelFood.add(lblCoke);
+		chckbxMenu[6] = new JCheckBox("Coke");
+		chckbxMenu[6].setBounds(6, 190, 69, 23);
 		
-		lblSoda = new JLabel("Soda(1000won)");
-		lblSoda.setBounds(6, 235, 102, 16);
-		panelFood.add(lblSoda);
+		chckbxMenu[7] = new JCheckBox("Soda");
+		chckbxMenu[7].setBounds(6, 215, 69, 23);
 		
-		lblBeer = new JLabel("Beer(2000won)");
-		lblBeer.setBounds(6, 263, 102, 16);
-		panelFood.add(lblBeer);
+		chckbxMenu[8] = new JCheckBox("Beer");
+		chckbxMenu[8].setBounds(6, 240, 69, 23);
 		
-		chickenCntTextField = new JTextField();
-		chickenCntTextField.setText("0");
-		chickenCntTextField.setEditable(false);
-		chickenCntTextField.setColumns(10);
-		chickenCntTextField.setBounds(177, 33, 31, 26);
-		panelFood.add(chickenCntTextField);
+		for(i = 0; i < 9; i++) {
+			panelFood.add(chckbxMenu[i]);
+		}
 		
-		beefCntTextField = new JTextField();
-		beefCntTextField.setText("0");
-		beefCntTextField.setEditable(false);
-		beefCntTextField.setColumns(10);
-		beefCntTextField.setBounds(177, 61, 31, 26);
-		panelFood.add(beefCntTextField);
+		lblChickenBurritoPrice = new JLabel("3000");
+		lblChickenBurritoPrice.setBounds(147, 44, 39, 16);
+		panelFood.add(lblChickenBurritoPrice);
 		
-		mixCntTextField = new JTextField();
-		mixCntTextField.setText("0");
-		mixCntTextField.setEditable(false);
-		mixCntTextField.setColumns(10);
-		mixCntTextField.setBounds(177, 89, 31, 26);
-		panelFood.add(mixCntTextField);
+		lblBeefBurritoPrice = new JLabel("3000");
+		lblBeefBurritoPrice.setBounds(147, 69, 39, 16);
+		panelFood.add(lblBeefBurritoPrice);
 		
-		friedCntTextField = new JTextField();
-		friedCntTextField.setText("0");
-		friedCntTextField.setEditable(false);
-		friedCntTextField.setColumns(10);
-		friedCntTextField.setBounds(177, 117, 31, 26);
-		panelFood.add(friedCntTextField);
+		lblMixBurritoPrice = new JLabel("3000");
+		lblMixBurritoPrice.setBounds(147, 94, 39, 16);
+		panelFood.add(lblMixBurritoPrice);
 		
-		ringCntTextField = new JTextField();
-		ringCntTextField.setText("0");
-		ringCntTextField.setEditable(false);
-		ringCntTextField.setColumns(10);
-		ringCntTextField.setBounds(177, 145, 31, 26);
-		panelFood.add(ringCntTextField);
+		lblFrenchFriedPrice = new JLabel("2000");
+		lblFrenchFriedPrice.setBounds(147, 119, 39, 16);
+		panelFood.add(lblFrenchFriedPrice);
 		
-		nachoCntTextField = new JTextField();
-		nachoCntTextField.setText("0");
-		nachoCntTextField.setEditable(false);
-		nachoCntTextField.setColumns(10);
-		nachoCntTextField.setBounds(177, 173, 31, 26);
-		panelFood.add(nachoCntTextField);
+		lblOnionRingPrice = new JLabel("2000");
+		lblOnionRingPrice.setBounds(147, 144, 39, 16);
+		panelFood.add(lblOnionRingPrice);
 		
-		cokeCntTextField = new JTextField();
-		cokeCntTextField.setText("0");
-		cokeCntTextField.setEditable(false);
-		cokeCntTextField.setColumns(10);
-		cokeCntTextField.setBounds(177, 201, 31, 26);
-		panelFood.add(cokeCntTextField);
+		lblNachoChipsPrice = new JLabel("2000");
+		lblNachoChipsPrice.setBounds(147, 169, 39, 16);
+		panelFood.add(lblNachoChipsPrice);
 		
-		sodaCntTextField = new JTextField();
-		sodaCntTextField.setText("0");
-		sodaCntTextField.setEditable(false);
-		sodaCntTextField.setColumns(10);
-		sodaCntTextField.setBounds(177, 230, 31, 26);
-		panelFood.add(sodaCntTextField);
+		lblCokePrice = new JLabel("1000");
+		lblCokePrice.setBounds(147, 194, 39, 16);
+		panelFood.add(lblCokePrice);
 		
-		beerCntTextField = new JTextField();
-		beerCntTextField.setText("0");
-		beerCntTextField.setEditable(false);
-		beerCntTextField.setColumns(10);
-		beerCntTextField.setBounds(177, 258, 31, 26);
-		panelFood.add(beerCntTextField);
+		lblSodaPrice = new JLabel("1000");
+		lblSodaPrice.setBounds(147, 219, 39, 16);
+		panelFood.add(lblSodaPrice);
 		
-		chickenUpBtn = new JButton("+");
-		chickenUpBtn.setBounds(213, 38, 25, 16);
-		panelFood.add(chickenUpBtn);
+		lblBeerPrice = new JLabel("2000");
+		lblBeerPrice.setBounds(147, 244, 39, 16);
+		panelFood.add(lblBeerPrice);
 		
-		beefUpBtn = new JButton("+");
-		beefUpBtn.setBounds(213, 67, 25, 16);
-		panelFood.add(beefUpBtn);
-		
-		mixUpBtn = new JButton("+");
-		mixUpBtn.setBounds(213, 95, 25, 16);
-		panelFood.add(mixUpBtn);
-		
-		friedUpBtn = new JButton("+");
-		friedUpBtn.setBounds(213, 123, 25, 16);
-		panelFood.add(friedUpBtn);
-		
-		ringUpBtn = new JButton("+");
-		ringUpBtn.setBounds(213, 151, 25, 16);
-		panelFood.add(ringUpBtn);
-		
-		nachoUpBtn = new JButton("+");
-		nachoUpBtn.setBounds(213, 179, 25, 16);
-		panelFood.add(nachoUpBtn);
-		
-		cokeUpBtn = new JButton("+");
-		cokeUpBtn.setBounds(213, 207, 25, 16);
-		panelFood.add(cokeUpBtn);
-		
-		sodaUpBtn = new JButton("+");
-		sodaUpBtn.setBounds(213, 235, 25, 16);
-		panelFood.add(sodaUpBtn);
-		
-		beerUpBtn = new JButton("+");
-		beerUpBtn.setBounds(213, 264, 25, 16);
-		panelFood.add(beerUpBtn);
-		
-		chickenDownBtn = new JButton("-");
-		chickenDownBtn.setBounds(243, 38, 25, 16);
-		panelFood.add(chickenDownBtn);
-		
-		beefDownBtn = new JButton("-");
-		beefDownBtn.setBounds(243, 67, 25, 16);
-		panelFood.add(beefDownBtn);
-		
-		mixDownBtn = new JButton("-");
-		mixDownBtn.setBounds(243, 95, 25, 16);
-		panelFood.add(mixDownBtn);
-		
-		friedDownBtn = new JButton("-");
-		friedDownBtn.setBounds(243, 123, 25, 16);
-		panelFood.add(friedDownBtn);
-		
-		ringDownBtn = new JButton("-");
-		ringDownBtn.setBounds(243, 151, 25, 16);
-		panelFood.add(ringDownBtn);
-		
-		nachoDownBtn = new JButton("-");
-		nachoDownBtn.setBounds(243, 179, 25, 16);
-		panelFood.add(nachoDownBtn);
-		
-		cokeDownBtn = new JButton("-");
-		cokeDownBtn.setBounds(243, 207, 25, 16);
-		panelFood.add(cokeDownBtn);
-		
-		sodaDownBtn = new JButton("-");
-		sodaDownBtn.setBounds(243, 235, 25, 16);
-		panelFood.add(sodaDownBtn);
-		
-		beerDownBtn = new JButton("-");
-		beerDownBtn.setBounds(243, 264, 25, 16);
-		panelFood.add(beerDownBtn);
-		
-		panelTopping = new JPanel();
-		panelTopping.setLayout(null);
-		panelTopping.setBounds(309, 177, 450, 166);
-		contentPane.add(panelTopping);
-		
-		lblTopping = new JLabel("Topping");
-		lblTopping.setBounds(48, 6, 74, 16);
-		panelTopping.add(lblTopping);
-		
+		//Flavor Panel
 		panelFlavor = new JPanel();
+		panelFlavor.setBackground(Color.WHITE);
 		panelFlavor.setLayout(null);
-		panelFlavor.setBounds(309, 44, 450, 121);
+		panelFlavor.setBounds(224, 44, 117, 121);
 		contentPane.add(panelFlavor);
 		
 		lblFlavor = new JLabel("Flavor");
-		lblFlavor.setBounds(210, 6, 48, 16);
+		lblFlavor.setBounds(40, 13, 48, 16);
 		panelFlavor.add(lblFlavor);
 		
-		lblChickenMild = new JLabel("Mild");
-		lblChickenMild.setBounds(8, 38, 34, 16);
-		panelFlavor.add(lblChickenMild);
+		chckbxFlavor[0] = new JCheckBox("Mild");
+		chckbxFlavor[0].setBounds(6, 40, 68, 23);
 		
-		lblBeefMild = new JLabel("Mild");
-		lblBeefMild.setBounds(8, 66, 34, 16);
-		panelFlavor.add(lblBeefMild);
+		chckbxFlavor[1] = new JCheckBox("Spicy");
+		chckbxFlavor[1].setBounds(6, 65, 68, 23);
 		
-		lblMixMild = new JLabel("Mild");
-		lblMixMild.setBounds(8, 94, 34, 16);
-		panelFlavor.add(lblMixMild);
+		chckbxFlavor[2] = new JCheckBox("Very Spicy");
+		chckbxFlavor[2].setBounds(6, 90, 105, 23);
 		
-		chickenMildCntTextField = new JTextField();
-		chickenMildCntTextField.setEditable(false);
-		chickenMildCntTextField.setText("0");
-		chickenMildCntTextField.setBounds(42, 33, 31, 26);
-		panelFlavor.add(chickenMildCntTextField);
-		chickenMildCntTextField.setColumns(10);
+		for(i = 0; i < 3; i++) {
+			panelFlavor.add(chckbxFlavor[i]);
+		}
 		
-		beefMildCntTextField = new JTextField();
-		beefMildCntTextField.setEditable(false);
-		beefMildCntTextField.setText("0");
-		beefMildCntTextField.setBounds(42, 61, 31, 26);
-		panelFlavor.add(beefMildCntTextField);
-		beefMildCntTextField.setColumns(10);
+		//BurrittoTopping Panel
+		panelBurritoTopping = new JPanel();
+		panelBurritoTopping.setBackground(Color.WHITE);
+		panelBurritoTopping.setLayout(null);
+		panelBurritoTopping.setBounds(353, 44, 214, 274);
+		contentPane.add(panelBurritoTopping);
 		
-		mixMildCntTextField = new JTextField();
-		mixMildCntTextField.setEditable(false);
-		mixMildCntTextField.setText("0");
-		mixMildCntTextField.setBounds(42, 89, 31, 26);
-		panelFlavor.add(mixMildCntTextField);
-		mixMildCntTextField.setColumns(10);
+		lblBurritoTopping = new JLabel("Burrito Topping");
+		lblBurritoTopping.setBounds(60, 13, 107, 16);
+		panelBurritoTopping.add(lblBurritoTopping);
 		
-		chickenMildUpBtn = new JButton("+");
-		chickenMildUpBtn.setBounds(76, 38, 25, 16);
-		panelFlavor.add(chickenMildUpBtn);
+		chckbxBurritoTopping[0] = new JCheckBox("Wedge Potato");
+		chckbxBurritoTopping[0].setBounds(6, 40, 117, 23);
 		
-		chickenMildDownBtn = new JButton("-");
-		chickenMildDownBtn.setBounds(106, 38, 25, 16);
-		panelFlavor.add(chickenMildDownBtn);
+		chckbxBurritoTopping[1] = new JCheckBox("Double Cheese");
+		chckbxBurritoTopping[1].setBounds(6, 65, 128, 23);
 		
-		beefMildUpBtn = new JButton("+");
-		beefMildUpBtn.setBounds(76, 67, 25, 16);
-		panelFlavor.add(beefMildUpBtn);
+		chckbxBurritoTopping[2] = new JCheckBox("Mozzarella Cheese");
+		chckbxBurritoTopping[2].setBounds(6, 90, 148, 23);
 		
-		beefMildDownBtn = new JButton("-");
-		beefMildDownBtn.setBounds(106, 67, 25, 16);
-		panelFlavor.add(beefMildDownBtn);
+		chckbxBurritoTopping[3] = new JCheckBox("Jalapeno Pepper");
+		chckbxBurritoTopping[3].setBounds(6, 115, 131, 23);
 		
-		mixMildUpBtn = new JButton("+");
-		mixMildUpBtn.setBounds(76, 95, 25, 16);
-		panelFlavor.add(mixMildUpBtn);
+		chckbxBurritoTopping[4] = new JCheckBox("Pineapple");
+		chckbxBurritoTopping[4].setBounds(6, 140, 97, 23);
 		
-		mixMildDownBtn = new JButton("-");
-		mixMildDownBtn.setBounds(106, 95, 25, 16);
-		panelFlavor.add(mixMildDownBtn);
+		chckbxBurritoTopping[5] = new JCheckBox("Shrimp");
+		chckbxBurritoTopping[5].setBounds(6, 165, 76, 23);
 		
-		lblChickenSpicy = new JLabel("Spicy");
-		lblChickenSpicy.setBounds(140, 38, 40, 16);
-		panelFlavor.add(lblChickenSpicy);
+		chckbxBurritoTopping[6] = new JCheckBox("Sausage");
+		chckbxBurritoTopping[6].setBounds(6, 190, 97, 23);
 		
-		lblBeefSpicy = new JLabel("Spicy");
-		lblBeefSpicy.setBounds(140, 66, 40, 16);
-		panelFlavor.add(lblBeefSpicy);
+		chckbxBurritoTopping[7] = new JCheckBox("Fish Cutlet");
+		chckbxBurritoTopping[7].setBounds(6, 215, 117, 23);
 		
-		lblMixSpicy = new JLabel("Spicy");
-		lblMixSpicy.setBounds(140, 94, 40, 16);
-		panelFlavor.add(lblMixSpicy);
+		chckbxBurritoTopping[8] = new JCheckBox("Bean");
+		chckbxBurritoTopping[8].setBounds(6, 240, 67, 23);
 		
-		chickenSpicyCntTextField = new JTextField();
-		chickenSpicyCntTextField.setEditable(false);
-		chickenSpicyCntTextField.setBounds(180, 33, 31, 26);
-		panelFlavor.add(chickenSpicyCntTextField);
-		chickenSpicyCntTextField.setText("0");
-		chickenSpicyCntTextField.setColumns(10);
+		for(i = 0; i < 9; i++) {
+			panelBurritoTopping.add(chckbxBurritoTopping[i]);
+		}
 		
-		beefSpicyCntTextField = new JTextField();
-		beefSpicyCntTextField.setEditable(false);
-		beefSpicyCntTextField.setText("0");
-		beefSpicyCntTextField.setBounds(180, 61, 31, 26);
-		panelFlavor.add(beefSpicyCntTextField);
-		beefSpicyCntTextField.setColumns(10);
+		lblWedgePotatoPrice = new JLabel("500");
+		lblWedgePotatoPrice.setBounds(173, 44, 29, 16);
+		panelBurritoTopping.add(lblWedgePotatoPrice);
 		
-		mixSpicyCntTextField = new JTextField();
-		mixSpicyCntTextField.setEditable(false);
-		mixSpicyCntTextField.setText("0");
-		mixSpicyCntTextField.setBounds(180, 89, 31, 26);
-		panelFlavor.add(mixSpicyCntTextField);
-		mixSpicyCntTextField.setColumns(10);
+		lblDoubleCheesePrice = new JLabel("500");
+		lblDoubleCheesePrice.setBounds(173, 69, 29, 16);
+		panelBurritoTopping.add(lblDoubleCheesePrice);
 		
-		lblChickenVerySpicy = new JLabel("Very Spicy");
-		lblChickenVerySpicy.setBounds(281, 38, 70, 16);
-		panelFlavor.add(lblChickenVerySpicy);
+		lblMozzarellaCheesePrice = new JLabel("1000");
+		lblMozzarellaCheesePrice.setBounds(165, 94, 38, 16);
+		panelBurritoTopping.add(lblMozzarellaCheesePrice);
 		
-		chickenSpicyUpBtn = new JButton("+");
-		chickenSpicyUpBtn.setBounds(214, 38, 25, 16);
-		panelFlavor.add(chickenSpicyUpBtn);
+		lblJalapenoPepperPrice = new JLabel("500");
+		lblJalapenoPepperPrice.setBounds(173, 119, 29, 16);
+		panelBurritoTopping.add(lblJalapenoPepperPrice);
 		
-		beefSpicyUpBtn = new JButton("+");
-		beefSpicyUpBtn.setBounds(214, 67, 25, 16);
-		panelFlavor.add(beefSpicyUpBtn);
+		lblPineapplePrice = new JLabel("500");
+		lblPineapplePrice.setBounds(173, 144, 29, 16);
+		panelBurritoTopping.add(lblPineapplePrice);
 		
-		mixSpicyUpBtn = new JButton("+");
-		mixSpicyUpBtn.setBounds(214, 95, 25, 16);
-		panelFlavor.add(mixSpicyUpBtn);
+		lblShrimpPrice = new JLabel("1000");
+		lblShrimpPrice.setBounds(165, 169, 38, 16);
+		panelBurritoTopping.add(lblShrimpPrice);
 		
-		chickenSpicyDownBtn = new JButton("-");
-		chickenSpicyDownBtn.setBounds(244, 38, 25, 16);
-		panelFlavor.add(chickenSpicyDownBtn);
+		lblSausagePrice = new JLabel("1000");
+		lblSausagePrice.setBounds(165, 194, 38, 16);
+		panelBurritoTopping.add(lblSausagePrice);
 		
-		beefSpicyDownBtn = new JButton("-");
-		beefSpicyDownBtn.setBounds(244, 67, 25, 16);
-		panelFlavor.add(beefSpicyDownBtn);
+		lblFishCutletPrice = new JLabel("1000");
+		lblFishCutletPrice.setBounds(165, 219, 38, 16);
+		panelBurritoTopping.add(lblFishCutletPrice);
 		
-		mixSpicyDownBtn = new JButton("-");
-		mixSpicyDownBtn.setBounds(244, 95, 25, 16);
-		panelFlavor.add(mixSpicyDownBtn);
+		lblBeanPrice = new JLabel("500");
+		lblBeanPrice.setBounds(173, 244, 29, 16);
+		panelBurritoTopping.add(lblBeanPrice);
+		panelBurritoTopping.setVisible(false);
 		
-		lblBeefVerySpicy = new JLabel("Very Spicy");
-		lblBeefVerySpicy.setBounds(281, 66, 70, 16);
-		panelFlavor.add(lblBeefVerySpicy);
+		//FrenchFriedTopping Panel
+		panelFrenchFriedTopping = new JPanel();
+		panelFrenchFriedTopping.setBackground(Color.WHITE);
+		panelFrenchFriedTopping.setLayout(null);
+		panelFrenchFriedTopping.setBounds(353, 44, 214, 274);
+		contentPane.add(panelFrenchFriedTopping);
 		
-		lblMixVerySpicy = new JLabel("Very Spicy");
-		lblMixVerySpicy.setBounds(281, 94, 70, 16);
-		panelFlavor.add(lblMixVerySpicy);
+		lblFrenchFriedTopping = new JLabel("French Fried Topping");
+		lblFrenchFriedTopping.setBounds(44, 12, 134, 16);
+		panelFrenchFriedTopping.add(lblFrenchFriedTopping);
 		
-		chickenVerySpicyCntTextField = new JTextField();
-		chickenVerySpicyCntTextField.setEditable(false);
-		chickenVerySpicyCntTextField.setText("0");
-		chickenVerySpicyCntTextField.setBounds(350, 33, 31, 26);
-		panelFlavor.add(chickenVerySpicyCntTextField);
-		chickenVerySpicyCntTextField.setColumns(10);
+		chckbxFrenchFriedTopping[0] = new JCheckBox("Bacon");
+		chckbxFrenchFriedTopping[0].setBounds(6, 40, 117, 23);
 		
-		beefVerySpicyCntTextField = new JTextField();
-		beefVerySpicyCntTextField.setEditable(false);
-		beefVerySpicyCntTextField.setText("0");
-		beefVerySpicyCntTextField.setBounds(350, 61, 31, 26);
-		panelFlavor.add(beefVerySpicyCntTextField);
-		beefVerySpicyCntTextField.setColumns(10);
+		chckbxFrenchFriedTopping[1] = new JCheckBox("Cheeze");
+		chckbxFrenchFriedTopping[1].setBounds(6, 65, 128, 23);
 		
-		mixVerySpicyCntTextField = new JTextField();
-		mixVerySpicyCntTextField.setEditable(false);
-		mixVerySpicyCntTextField.setText("0");
-		mixVerySpicyCntTextField.setBounds(350, 89, 31, 26);
-		panelFlavor.add(mixVerySpicyCntTextField);
-		mixVerySpicyCntTextField.setColumns(10);
+		for(i = 0; i < 2; i++) {
+			panelFrenchFriedTopping.add(chckbxFrenchFriedTopping[i]);
+		}
 		
-		chickenVerySpicyUpBtn = new JButton("+");
-		chickenVerySpicyUpBtn.setBounds(383, 38, 25, 16);
-		panelFlavor.add(chickenVerySpicyUpBtn);
+		lblBaconPrice = new JLabel("2000");
+		lblBaconPrice.setBounds(145, 44, 49, 16);
+		panelFrenchFriedTopping.add(lblBaconPrice);
 		
-		beefVerySpicyUpBtn = new JButton("+");
-		beefVerySpicyUpBtn.setBounds(383, 67, 25, 16);
-		panelFlavor.add(beefVerySpicyUpBtn);
+		lblCheezePrice = new JLabel("1000");
+		lblCheezePrice.setBounds(146, 69, 48, 16);
+		panelFrenchFriedTopping.add(lblCheezePrice);
+		panelFrenchFriedTopping.setVisible(false);
 		
-		mixVerySpicyUpBtn = new JButton("+");
-		mixVerySpicyUpBtn.setBounds(383, 95, 25, 16);
-		panelFlavor.add(mixVerySpicyUpBtn);
+		//NachoChipsTopping Panel
+		panelNachoChipsTopping = new JPanel();
+		panelNachoChipsTopping.setBackground(Color.WHITE);
+		panelNachoChipsTopping.setLayout(null);
+		panelNachoChipsTopping.setBounds(353, 44, 214, 274);
+		contentPane.add(panelNachoChipsTopping);
 		
-		chickenVerySpicyDownBtn = new JButton("-");
-		chickenVerySpicyDownBtn.setBounds(413, 38, 25, 16);
-		panelFlavor.add(chickenVerySpicyDownBtn);
+		lblNachoChipsTopping = new JLabel("Nacho Chips Topping");
+		lblNachoChipsTopping.setBounds(39, 12, 142, 16);
+		panelNachoChipsTopping.add(lblNachoChipsTopping);
 		
-		beefVerySpicyDownBtn = new JButton("-");
-		beefVerySpicyDownBtn.setBounds(413, 67, 25, 16);
-		panelFlavor.add(beefVerySpicyDownBtn);
+		chckbxNachoChipsTopping[0] = new JCheckBox("Guacamole");
+		chckbxNachoChipsTopping[0].setBounds(6, 40, 117, 23);
 		
-		mixVerySpicyDownBtn = new JButton("-");
-		mixVerySpicyDownBtn.setBounds(413, 95, 25, 16);
-		panelFlavor.add(mixVerySpicyDownBtn);
+		chckbxNachoChipsTopping[1] = new JCheckBox("Tomato");
+		chckbxNachoChipsTopping[1].setBounds(6, 65, 128, 23);
 		
-		btnOrder = new JButton("Order");
-		btnOrder.setBounds(642, 369, 117, 29);
-		contentPane.add(btnOrder);
+		chckbxNachoChipsTopping[2] = new JCheckBox("Peanut Butter");
+		chckbxNachoChipsTopping[2].setBounds(6, 90, 148, 23);
+		
+		for(i = 0; i < 3; i++) {
+			panelNachoChipsTopping.add(chckbxNachoChipsTopping[i]);
+		}
+		
+		lblGuacamolePrice = new JLabel("1500");
+		lblGuacamolePrice.setBounds(164, 44, 38, 16);
+		panelNachoChipsTopping.add(lblGuacamolePrice);
+		
+		lblTomatoPrice = new JLabel("500");
+		lblTomatoPrice.setBounds(173, 69, 29, 16);
+		panelNachoChipsTopping.add(lblTomatoPrice);
+		
+		lblPeanutButterPrice = new JLabel("500");
+		lblPeanutButterPrice.setBounds(173, 94, 38, 16);
+		panelNachoChipsTopping.add(lblPeanutButterPrice);
+		panelNachoChipsTopping.setVisible(false);
+		
+		btnPutInCart = new JButton("Put In Cart");
+		btnPutInCart.setBounds(15, 330, 117, 29);
+		contentPane.add(btnPutInCart);
+		
+		JButton btnPurchase = new JButton("Purchase");
+		btnPurchase.setBounds(122, 330, 117, 29);
+		contentPane.add(btnPurchase);
 	}
 }
