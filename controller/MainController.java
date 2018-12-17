@@ -17,6 +17,7 @@ import model.MozzarellaCheese;
 import model.PeanutButter;
 import model.Pineapple;
 import model.Sausage;
+import model.SelectedFood;
 import model.Shrimp;
 import model.Spicy;
 import model.Tomato;
@@ -54,6 +55,11 @@ public class MainController {
 		
 		// set Food Data
 		Food[] foodArr = new Food[9];
+		
+		for(int i = 0; i < 9; i++) {
+			foodArr[i] = new Food();
+		}
+		
 		foodArr[0].name = "Chicken Burrito";
 		foodArr[0].price = 3000;
 		foodArr[1].name = "Beef Burrito";
@@ -74,6 +80,7 @@ public class MainController {
 		foodArr[8].price = 2000;
 		
 		Buy buyController = new Buy();
+		CartController cartController = new CartController();
 		
 		// add Foods to menu
 		MenuController menuController = new MenuController();
@@ -1191,6 +1198,86 @@ public class MainController {
 						}
 					}
 				}
+			}
+		};
+		
+		SelectedFood doneSelect = new SelectedFood();
+		
+		ActionListener PutinListener = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switch(currState) {
+				case "Bacon":
+					doneSelect = buyController.execute(bacon);
+					break;
+				case "Bean":
+					doneSelect = buyController.execute(bean);
+					break;
+				case "Cheeze":
+					doneSelect = buyController.execute(cheeze);
+					break;
+				case "Double Cheese":
+					doneSelect = buyController.execute(doublecheese);
+					break;
+				case "Fish Cutlet":
+					doneSelect = buyController.execute(fishcutlet);
+					break;
+				case "Guacamole":
+					doneSelect = buyController.execute(guacamole);
+					break;
+				case "Jalapeno Pepper":
+					doneSelect = buyController.execute(jalapenopepper);
+					break;
+				case "Mozzarella Cheese":
+					doneSelect = buyController.execute(mozzarellacheese);
+					break;
+				case "Peanut Butter":
+					doneSelect = buyController.execute(peanutbutter);
+					break;
+				case "Pineapple":
+					doneSelect = buyController.execute(pineapple);
+					break;
+				case "Sausage":
+					doneSelect = buyController.execute(sausage);
+					break;
+				case "Shrimp":
+					doneSelect = buyController.execute(shrimp);
+					break;
+				case "Tomato":
+					doneSelect = buyController.execute(tomato);
+					break;
+				case "Wedge Potato":
+					doneSelect = buyController.execute(wedgepotato);
+					break;
+				}
+				cartController.addSelectedFood(doneSelect);
+				
+				// add cart view visible code
+			}
+		};
+		
+		ActionListener cartCountPlus = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int whereModify;
+				whereModify = cartController.currentCart.indexOf(this panel's SelectedFood);
+			
+				SelectedFood tmpSelectedFood = cartController.currentCart.get(whereModify);
+				tmpSelectedFood.count++;
+			}
+		};
+		
+		ActionListener cartCountMinus = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int whereModify;
+				whereModify = cartController.currentCart.indexOf(this panel's SelectedFood);
+			
+				SelectedFood tmpSelectedFood = cartController.currentCart.get(whereModify);
+				tmpSelectedFood.count--;
+			}
+		};
+		
+		ActionListener purchase = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buyController.execute(cartController.currentCart);
 			}
 		};
 		

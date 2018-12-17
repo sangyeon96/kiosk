@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import model.Food;
 import model.Order;
+import model.Payment;
 import model.SelectedFood;
 
 //
@@ -23,6 +24,7 @@ public class Buy implements Command
 	public LinkedList<SelectedFood> finalCart;
 	public LinkedList<Order> 		allOrder;
 	public Purchase					controlPurchase;
+	public SelectedFood				tmpSelected;
 	
 	Buy(){
 		finalCart 		= new LinkedList<SelectedFood>();
@@ -33,7 +35,7 @@ public class Buy implements Command
 		allOrder = controlOrder.orderList;
 	}
 	
-	public void putInCart()
+	public SelectedFood putInCart(Food WillAdd)
 	{
 		/*  if the put in button selected in main, this method will be started.
 		 *  1. choose one food in view, others' checkbox will be disabled.
@@ -42,10 +44,16 @@ public class Buy implements Command
 		 *  4. 2-3 will be repeated, with adding them to currentCart
 		 *  5. if the purchease button is pushed, the currentCart will be finalCart in Buy, and this method will be done.
 		 */
-		Food toPutIn = new Food();
+		SelectedFood mySelected = new SelectedFood();
+		mySelected.name = WillAdd.name;
+		mySelected.price = WillAdd.price;
+		mySelected.flavor = WillAdd.flavor;
+		mySelected.selectedTopping = WillAdd.myToppings;
+		
+		return mySelected;
 	}
 	
-	public boolean purchase(SelectedFood[] finalCart)
+	public boolean purchase(LinkedList<SelectedFood> finalCart)
 	{
 		/*
 		 *  1. choose payment
@@ -53,13 +61,28 @@ public class Buy implements Command
 		 *  3. get Req from external system
 		 *  4. make Order object and put it in orderList
 		 */
+		Payment payment = new Payment();
+		payment.name = "cash";
+		payment.device.ACK = true;
 		
 		return true;
 	}
-
+	
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public SelectedFood execute(Food WillAdd) {
+		// TODO Auto-generated method stub
+		return putInCart(WillAdd);
+	}
+
+	@Override
+	public boolean execute(LinkedList<SelectedFood> finalCart) {
+		// TODO Auto-generated method stub
+		return purchase(finalCart);
 	}
 }

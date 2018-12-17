@@ -61,4 +61,16 @@ public class MenuController implements Command
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public boolean execute(LinkedList<SelectedFood> finalCart) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public SelectedFood execute(Food food) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
