@@ -59,10 +59,10 @@ public class Purchase
 		}
 		int input = JOptionPane.showOptionDialog(null, purchaseMessage, "Method of Payment", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
 		if(input == JOptionPane.OK_OPTION) { //By Card
-			payment = paymentController.paymentList.get(1);
+			payment = paymentController.paymentList.get(0);
 		}
 		else { //By Cash
-			payment = paymentController.paymentList.get(0);
+			payment = paymentController.paymentList.get(1);
 		}
 	}
 	
