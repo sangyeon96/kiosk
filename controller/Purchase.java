@@ -36,7 +36,7 @@ public class Purchase
 		
 		Payment card = new Payment();
 		card.name = "By Card";
-		cash.device = new PaymentDevice();
+		card.device = new PaymentDevice();
 		paymentController.addPayment(card);
 	}
 	

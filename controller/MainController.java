@@ -1357,6 +1357,8 @@ public class MainController {
 				if(e.getSource() == Kiosk.btnPurchase) {
 					if(buyController.execute(cartController.currentCart)) {
 						JOptionPane.showMessageDialog(null, "Purchase Completed.");
+						//refresh currentCart
+						cartController.currentCart.clear();
 					}
 					else {
 						JOptionPane.showMessageDialog(null, "Purchase Failed. Try Again.", "Error Message", JOptionPane.ERROR_MESSAGE);
