@@ -211,6 +211,7 @@ public class MainController {
 			public void actionPerformed(ActionEvent e) {
 				int index = -1;
 				boolean status = false;
+				// need to fix here for topping vector
 				for(int i = 0; i < 14; i++) {
 					if(Kiosk.chckbxTopping[i].isSelected()) {
 						index = i;

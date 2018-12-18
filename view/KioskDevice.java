@@ -47,7 +47,7 @@ public class KioskDevice extends JFrame {
 	
 	public JButton btnAdminLogin;
 	public JButton btnPutInCart;
-	private JButton btnPurchase;
+	public JButton btnPurchase;
 	
 	private int i;
 	
