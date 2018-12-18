@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
@@ -16,7 +18,7 @@ import model.Guacamole;
 import model.JalapenoPepper;
 import model.Mild;
 import model.MozzarellaCheese;
-import model.Payment;
+import model.Order;
 import model.PeanutButter;
 import model.Pineapple;
 import model.Sausage;
@@ -28,6 +30,7 @@ import model.VerySpicy;
 import model.WedgePotato;
 import view.CartView;
 import view.KioskDevice;
+import view.KitchenDisplay;
 
 public class MainController {
 
@@ -64,6 +67,8 @@ public class MainController {
 	
 	static ActionListener cartCountPlus;
 	static ActionListener cartCountMinus;
+	
+	static int orderCount = 1;
 			
 	public static void main(String[] args) {
 		
@@ -105,6 +110,9 @@ public class MainController {
 		// open new frame
 		KioskDevice Kiosk = new KioskDevice();
 		Kiosk.setVisible(true);
+		
+		KitchenDisplay kitchenDisplay = new KitchenDisplay();
+		kitchenDisplay.setVisible(true);
 
 		ActionListener FoodListener = new ActionListener() {
 			@Override
@@ -1363,6 +1371,13 @@ public class MainController {
 				if(e.getSource() == Kiosk.btnPurchase) {
 					if(buyController.execute(cartController.currentCart)) {
 						JOptionPane.showMessageDialog(null, "Purchase Completed.");
+						
+						Date date = new Date();
+						Order newOrder = new Order(orderCount, cartController.currentCart, buyController.controlPurchase.totalPrice, buyController.controlPurchase.payment, date);
+						buyController.controlOrder.appendOrder(newOrder);
+						orderCount++;
+						kitchenDisplay.displayOrder(buyController.controlOrder.orderList);
+						
 						//refresh currentCart
 						cartController.currentCart.clear();
 					}

@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.LinkedList;
 
 //
 //
@@ -16,8 +17,16 @@ import java.util.Date;
 public class Order
 {
 	public int orderID;
-	public SelectedFood purchasedFoods;
+	public LinkedList<SelectedFood> purchasedFoods;
 	public int totalPrice;
 	public Payment payment;
 	public Date date;
+	
+	public Order(int orderID, LinkedList<SelectedFood> finalCart, int totalPrice, Payment payment, Date date) {
+		this.orderID = orderID;
+		this.purchasedFoods = finalCart;
+		this.totalPrice = totalPrice;
+		this.payment = payment;
+		this.date = date;
+	}
 }

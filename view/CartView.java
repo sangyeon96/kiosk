@@ -36,7 +36,6 @@ public class CartView extends JFrame {
 		setTitle("Cart");
 		setBounds(100, 100, 1317, 300);
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
