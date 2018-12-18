@@ -1,7 +1,5 @@
 package view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -51,23 +49,7 @@ public class KioskDevice extends JFrame {
 	public JButton btnPutInCart;
 	private JButton btnPurchase;
 	
-	public int i;
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					KioskDevice frame = new KioskDevice();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private int i;
 	
 	public void showOrderResult()
 	{

@@ -23,6 +23,7 @@ import model.Spicy;
 import model.Tomato;
 import model.VerySpicy;
 import model.WedgePotato;
+import view.CartView;
 import view.KioskDevice;
 
 public class MainController {
@@ -50,6 +51,12 @@ public class MainController {
 			
 	static boolean flavorFlag = false;
 	static String currState = "";
+	
+	static SelectedFood doneSelect;
+	static CartView cartView = null;
+	
+	static ActionListener cartCountPlus;
+	static ActionListener cartCountMinus;
 			
 	public static void main(String[] args) {
 		
@@ -116,11 +123,6 @@ public class MainController {
 						Kiosk.panelFrenchFriedTopping.setVisible(true);
 					else if(index == 5) //Food is Nacho Chips
 						Kiosk.panelNachoChipsTopping.setVisible(true);
-					else {
-						Kiosk.panelBurritoTopping.setVisible(false);
-						Kiosk.panelFrenchFriedTopping.setVisible(false);
-						Kiosk.panelNachoChipsTopping.setVisible(false);
-					}
 					
 					Iterator<Food> iterator = menuController.getMenu().iterator();
 					Food tmpFood = menuController.getMenu().getFirst();
@@ -138,6 +140,9 @@ public class MainController {
 					for(int i = 0; i < 9; i++) {
 						Kiosk.chckbxMenu[i].setEnabled(true);
 					}
+					Kiosk.panelBurritoTopping.setVisible(false);
+					Kiosk.panelFrenchFriedTopping.setVisible(false);
+					Kiosk.panelNachoChipsTopping.setVisible(false);
 				}
 			}
 			
@@ -1201,77 +1206,92 @@ public class MainController {
 			}
 		};
 		
-		SelectedFood doneSelect = new SelectedFood();
+		doneSelect = new SelectedFood();
 		
 		ActionListener PutinListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				switch(currState) {
-				case "Bacon":
-					doneSelect = buyController.execute(bacon);
-					break;
-				case "Bean":
-					doneSelect = buyController.execute(bean);
-					break;
-				case "Cheeze":
-					doneSelect = buyController.execute(cheeze);
-					break;
-				case "Double Cheese":
-					doneSelect = buyController.execute(doublecheese);
-					break;
-				case "Fish Cutlet":
-					doneSelect = buyController.execute(fishcutlet);
-					break;
-				case "Guacamole":
-					doneSelect = buyController.execute(guacamole);
-					break;
-				case "Jalapeno Pepper":
-					doneSelect = buyController.execute(jalapenopepper);
-					break;
-				case "Mozzarella Cheese":
-					doneSelect = buyController.execute(mozzarellacheese);
-					break;
-				case "Peanut Butter":
-					doneSelect = buyController.execute(peanutbutter);
-					break;
-				case "Pineapple":
-					doneSelect = buyController.execute(pineapple);
-					break;
-				case "Sausage":
-					doneSelect = buyController.execute(sausage);
-					break;
-				case "Shrimp":
-					doneSelect = buyController.execute(shrimp);
-					break;
-				case "Tomato":
-					doneSelect = buyController.execute(tomato);
-					break;
-				case "Wedge Potato":
-					doneSelect = buyController.execute(wedgepotato);
-					break;
+				if(e.getSource() == Kiosk.btnPutInCart) {
+					switch(currState) {
+					case "Bacon":
+						doneSelect = buyController.execute(bacon);
+						break;
+					case "Bean":
+						doneSelect = buyController.execute(bean);
+						break;
+					case "Cheeze":
+						doneSelect = buyController.execute(cheeze);
+						break;
+					case "Double Cheese":
+						doneSelect = buyController.execute(doublecheese);
+						break;
+					case "Fish Cutlet":
+						doneSelect = buyController.execute(fishcutlet);
+						break;
+					case "Guacamole":
+						doneSelect = buyController.execute(guacamole);
+						break;
+					case "Jalapeno Pepper":
+						doneSelect = buyController.execute(jalapenopepper);
+						break;
+					case "Mozzarella Cheese":
+						doneSelect = buyController.execute(mozzarellacheese);
+						break;
+					case "Peanut Butter":
+						doneSelect = buyController.execute(peanutbutter);
+						break;
+					case "Pineapple":
+						doneSelect = buyController.execute(pineapple);
+						break;
+					case "Sausage":
+						doneSelect = buyController.execute(sausage);
+						break;
+					case "Shrimp":
+						doneSelect = buyController.execute(shrimp);
+						break;
+					case "Tomato":
+						doneSelect = buyController.execute(tomato);
+						break;
+					case "Wedge Potato":
+						doneSelect = buyController.execute(wedgepotato);
+						break;
+					}
+					cartController.addSelectedFood(doneSelect);
+					
+					// add cart view visible code
+					cartView = new CartView(cartController.currentCart);
+					cartView.setVisible(true);
+					
+					// add cart view's button listener
+					cartView.btnPlus.addActionListener(cartCountPlus);
+					cartView.btnMinus.addActionListener(cartCountMinus);
 				}
-				cartController.addSelectedFood(doneSelect);
-				
-				// add cart view visible code
 			}
 		};
 		
-		ActionListener cartCountPlus = new ActionListener() {
+		cartCountPlus = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int row = cartView.cartTable.getSelectedRow();
+				
 				int whereModify;
-				whereModify = cartController.currentCart.indexOf(this panel's SelectedFood);
+				whereModify = cartController.currentCart.indexOf(cartController.currentCart.get(row));
 			
 				SelectedFood tmpSelectedFood = cartController.currentCart.get(whereModify);
 				tmpSelectedFood.count++;
+				
+				cartView.refresh();
 			}
 		};
 		
-		ActionListener cartCountMinus = new ActionListener() {
+		cartCountMinus = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int row = cartView.cartTable.getSelectedRow();
 				int whereModify;
-				whereModify = cartController.currentCart.indexOf(this panel's SelectedFood);
+				whereModify = cartController.currentCart.indexOf(cartController.currentCart.get(row));
 			
 				SelectedFood tmpSelectedFood = cartController.currentCart.get(whereModify);
 				tmpSelectedFood.count--;
+				
+				cartView.refresh();
 			}
 		};
 		
@@ -1281,7 +1301,7 @@ public class MainController {
 			}
 		};
 		
-		// add button listener regist codes here
+		// add kiosk device's button listener
 		for(int i = 0; i < 9; i++) {
 			Kiosk.chckbxMenu[i].addActionListener(FoodListener);
 		}
@@ -1291,6 +1311,7 @@ public class MainController {
 		for(int i = 0; i < 14; i++) {
 			Kiosk.chckbxTopping[i].addActionListener(ToppListener);
 		}
+		Kiosk.btnPutInCart.addActionListener(PutinListener);
 	}
 
 }
