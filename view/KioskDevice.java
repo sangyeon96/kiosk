@@ -119,6 +119,7 @@ public class KioskDevice extends JFrame {
 		chckbxMenu[8].setBounds(6, 240, 129, 23);
 		
 		for(i = 0; i < 9; i++) {
+			chckbxMenu[i].setBackground(Color.white);
 			panelFood.add(chckbxMenu[i]);
 		}
 		
@@ -180,6 +181,7 @@ public class KioskDevice extends JFrame {
 		chckbxFlavor[2].setBounds(6, 90, 105, 23);
 		
 		for(i = 0; i < 3; i++) {
+			chckbxFlavor[i].setBackground(Color.white);
 			panelFlavor.add(chckbxFlavor[i]);
 		}
 		
@@ -223,6 +225,7 @@ public class KioskDevice extends JFrame {
 		chckbxTopping[8].setBounds(6, 240, 148, 23);
 		
 		for(i = 0; i < 9; i++) {
+			chckbxTopping[i].setBackground(Color.white);
 			panelBurritoTopping.add(chckbxTopping[i]);
 		}
 		
@@ -281,6 +284,7 @@ public class KioskDevice extends JFrame {
 		chckbxTopping[10].setBounds(6, 65, 128, 23);
 		
 		for(i = 9; i < 11; i++) {
+			chckbxTopping[i].setBackground(Color.white);
 			panelFrenchFriedTopping.add(chckbxTopping[i]);
 		}
 		
@@ -314,6 +318,7 @@ public class KioskDevice extends JFrame {
 		chckbxTopping[13].setBounds(6, 90, 148, 23);
 		
 		for(i = 11; i < 14; i++) {
+			chckbxTopping[i].setBackground(Color.white);
 			panelNachoChipsTopping.add(chckbxTopping[i]);
 		}
 		
