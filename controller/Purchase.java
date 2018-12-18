@@ -1,6 +1,12 @@
 package controller;
 
+import java.util.LinkedList;
+
+import javax.swing.JOptionPane;
+
 import model.Payment;
+import model.PaymentDevice;
+import model.SelectedFood;
 
 //
 //
@@ -15,27 +21,58 @@ import model.Payment;
 
 public class Purchase
 {
-	public int totalPrice;
+	public PaymentController paymentController;
 	public Payment payment;
+	public int totalPrice;
 	public boolean successFlag;
 	
-	public void getCurrentCart()
-	{
-	
+	public Purchase() {
+		paymentController = new PaymentController(); //create paymentList
+		
+		Payment cash = new Payment();
+		cash.name = "By Cash";
+		cash.device = new PaymentDevice();
+		paymentController.addPayment(cash);
+		
+		Payment card = new Payment();
+		card.name = "By Card";
+		cash.device = new PaymentDevice();
+		paymentController.addPayment(card);
 	}
 	
-	public void calculateTotalPrice()
+	public void calculateTotalPrice(LinkedList<SelectedFood> finalCart)
 	{
-	
+		totalPrice = 0;
+		for(SelectedFood food: finalCart) {
+			totalPrice += food.price * food.count;
+		}
 	}
 	
 	public void choosePayment()
 	{
-	
+		Object[] options = new Object[2];
+		String purchaseMessage = "Total price is "+totalPrice+" won. Which payment do you prefer?";
+		int i = 0;
+		for(Payment payOption: paymentController.paymentList) {
+			options[i] = payOption.name;
+			i++;
+		}
+		int input = JOptionPane.showOptionDialog(null, purchaseMessage, "Method of Payment", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
+		if(input == JOptionPane.OK_OPTION) { //By Card
+			payment = paymentController.paymentList.get(1);
+		}
+		else { //By Cash
+			payment = paymentController.paymentList.get(0);
+		}
 	}
 	
-	public boolean tryPurchase(int totalPrice)
+	public boolean tryPurchase()
 	{
-		return true;
+		if(payment.device.ACK)
+			successFlag = true;
+		else
+			successFlag = false;
+		
+		return successFlag;
 	}
 }

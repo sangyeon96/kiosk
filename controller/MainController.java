@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
 
+import javax.swing.JOptionPane;
+
 import model.Bacon;
 import model.Bean;
 import model.Cheeze;
@@ -14,6 +16,7 @@ import model.Guacamole;
 import model.JalapenoPepper;
 import model.Mild;
 import model.MozzarellaCheese;
+import model.Payment;
 import model.PeanutButter;
 import model.Pineapple;
 import model.Sausage;
@@ -1349,9 +1352,16 @@ public class MainController {
 			}
 		};
 		
-		ActionListener purchase = new ActionListener() {
+		ActionListener purchaseListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				buyController.execute(cartController.currentCart);
+				if(e.getSource() == Kiosk.btnPurchase) {
+					if(buyController.execute(cartController.currentCart)) {
+						JOptionPane.showMessageDialog(null, "Purchase Completed.");
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Purchase Failed. Try Again.", "Error Message", JOptionPane.ERROR_MESSAGE);
+					}
+				}
 			}
 		};
 		
@@ -1366,6 +1376,7 @@ public class MainController {
 			Kiosk.chckbxTopping[i].addActionListener(ToppListener);
 		}
 		Kiosk.btnPutInCart.addActionListener(PutinListener);
+		Kiosk.btnPurchase.addActionListener(purchaseListener);
 	}
 
 }
