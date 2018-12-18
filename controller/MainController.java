@@ -53,6 +53,7 @@ public class MainController {
 	static Food selected;
 	
 	static boolean flavorFlag = false;
+	static boolean toppingFlag = false;
 	static String currState = "";
 	
 	static SelectedFood doneSelect;
@@ -117,8 +118,9 @@ public class MainController {
 						if(j != foodIndex)
 							Kiosk.chckbxMenu[j].setEnabled(false);
 					}
-					if(foodIndex != 6 && foodIndex != 7 && foodIndex != 8) {
+					if(foodIndex != 4 && foodIndex != 6 && foodIndex != 7 && foodIndex != 8) {
 						Kiosk.panelFlavor.setVisible(true);
+						toppingFlag = true;
 					}
 					
 					Iterator<Food> iterator = menuController.getMenu().iterator();
@@ -167,6 +169,9 @@ public class MainController {
 					}
 					else if(foodIndex == 5) { //Food is Nacho Chips
 						Kiosk.panelNachoChipsTopping.setVisible(true);
+					}
+					else {
+						
 					}
 					
 					String tmpFlavor = Kiosk.chckbxFlavor[index].getText();
@@ -1218,50 +1223,55 @@ public class MainController {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == Kiosk.btnPutInCart) {
 					doneSelect = new SelectedFood();
-					
-					switch(currState) {
-					case "Bacon":
-						doneSelect = buyController.execute(bacon);
-						break;
-					case "Bean":
-						doneSelect = buyController.execute(bean);
-						break;
-					case "Cheeze":
-						doneSelect = buyController.execute(cheeze);
-						break;
-					case "Double Cheese":
-						doneSelect = buyController.execute(doublecheese);
-						break;
-					case "Fish Cutlet":
-						doneSelect = buyController.execute(fishcutlet);
-						break;
-					case "Guacamole":
-						doneSelect = buyController.execute(guacamole);
-						break;
-					case "Jalapeno Pepper":
-						doneSelect = buyController.execute(jalapenopepper);
-						break;
-					case "Mozzarella Cheese":
-						doneSelect = buyController.execute(mozzarellacheese);
-						break;
-					case "Peanut Butter":
-						doneSelect = buyController.execute(peanutbutter);
-						break;
-					case "Pineapple":
-						doneSelect = buyController.execute(pineapple);
-						break;
-					case "Sausage":
-						doneSelect = buyController.execute(sausage);
-						break;
-					case "Shrimp":
-						doneSelect = buyController.execute(shrimp);
-						break;
-					case "Tomato":
-						doneSelect = buyController.execute(tomato);
-						break;
-					case "Wedge Potato":
-						doneSelect = buyController.execute(wedgepotato);
-						break;
+					if(toppingFlag) {
+						switch(currState) {
+						case "Bacon":
+							doneSelect = buyController.execute(bacon);
+							break;
+						case "Bean":
+							doneSelect = buyController.execute(bean);
+							break;
+						case "Cheeze":
+							doneSelect = buyController.execute(cheeze);
+							break;
+						case "Double Cheese":
+							doneSelect = buyController.execute(doublecheese);
+							break;
+						case "Fish Cutlet":
+							doneSelect = buyController.execute(fishcutlet);
+							break;
+						case "Guacamole":
+							doneSelect = buyController.execute(guacamole);
+							break;
+						case "Jalapeno Pepper":
+							doneSelect = buyController.execute(jalapenopepper);
+							break;
+						case "Mozzarella Cheese":
+							doneSelect = buyController.execute(mozzarellacheese);
+							break;
+						case "Peanut Butter":
+							doneSelect = buyController.execute(peanutbutter);
+							break;
+						case "Pineapple":
+							doneSelect = buyController.execute(pineapple);
+							break;
+						case "Sausage":
+							doneSelect = buyController.execute(sausage);
+							break;
+						case "Shrimp":
+							doneSelect = buyController.execute(shrimp);
+							break;
+						case "Tomato":
+							doneSelect = buyController.execute(tomato);
+							break;
+						case "Wedge Potato":
+							doneSelect = buyController.execute(wedgepotato);
+							break;
+						}
+						
+					}
+					else {
+						doneSelect = buyController.execute(selected);
 					}
 					doneSelect.count = 1;
 					cartController.addSelectedFood(doneSelect);
@@ -1275,6 +1285,8 @@ public class MainController {
 					cartView.btnMinus.addActionListener(cartCountMinus);
 					
 					//reset KioskDevice
+					flavorFlag = false;
+					toppingFlag = false;
 					for(int i = 0; i < 9; i++) {
 						Kiosk.chckbxMenu[i].setSelected(false);
 						Kiosk.chckbxMenu[i].setEnabled(true);
