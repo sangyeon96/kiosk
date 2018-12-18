@@ -13,6 +13,8 @@ import model.SelectedFood;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class CartView extends JFrame {
 
@@ -25,7 +27,7 @@ public class CartView extends JFrame {
 	public JButton btnMinus;
 	public JButton btnPlus;
 	
-	private LinkedList<SelectedFood> currCart;
+	private LinkedList<SelectedFood> currCart = new LinkedList();
 	
 	/**
 	 * Create the frame.
@@ -34,9 +36,8 @@ public class CartView extends JFrame {
 		this.currCart = currentCart;
 		
 		setTitle("Cart");
-		setBounds(100, 100, 1317, 300);
+		setBounds(100, 100, 1349, 300);
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
@@ -46,7 +47,7 @@ public class CartView extends JFrame {
 		cartModel = new DefaultTableModel(cartCategory, 0);
 		cartTable = new JTable(cartModel);
 		scroll = new JScrollPane(cartTable);
-		scroll.setBounds(10, 10, 1301, 222);
+		scroll.setBounds(10, 10, 1333, 222);
 		contentPane.add(scroll);
 		
 		for(SelectedFood selected: currCart) {
@@ -68,16 +69,30 @@ public class CartView extends JFrame {
 		btnMinus.setBounds(50, 244, 31, 25);
 		contentPane.add(btnMinus);
 		
-		btnClose = new JButton("Close");
-		btnClose.addActionListener(new ActionListener() {
+		ActionListener btnCloseActionListener = new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnClose) {
-					CartView.this.dispose();
+					btnCloseActionPerformed();
+				}
+			}
+		};
+		btnClose = new JButton("Close");
+		btnClose.setBounds(239, 241, 85, 30);
+		contentPane.add(btnClose);
+		btnClose.addActionListener(btnCloseActionListener);
+		
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				if(e.getSource() == this) {
+					btnCloseActionPerformed();
 				}
 			}
 		});
-		btnClose.setBounds(239, 241, 85, 30);
-		contentPane.add(btnClose);
+	}
+	
+	public void btnCloseActionPerformed() {
+		CartView.this.dispose();
 	}
 	
 	public void refresh() {

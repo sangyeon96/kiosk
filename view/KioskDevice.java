@@ -85,6 +85,7 @@ public class KioskDevice extends JFrame {
 		panelFood.setLayout(null);
 		panelFood.setBounds(19, 44, 193, 274);
 		contentPane.add(panelFood);
+		panelFood.setVisible(true);
 		
 		lblFood = new JLabel("Menu");
 		lblFood.setBounds(80, 13, 48, 16);
@@ -163,6 +164,7 @@ public class KioskDevice extends JFrame {
 		panelFlavor.setLayout(null);
 		panelFlavor.setBounds(224, 44, 117, 121);
 		contentPane.add(panelFlavor);
+		panelFlavor.setVisible(false);
 		
 		lblFlavor = new JLabel("Flavor");
 		lblFlavor.setBounds(40, 13, 48, 16);
@@ -187,6 +189,7 @@ public class KioskDevice extends JFrame {
 		panelBurritoTopping.setLayout(null);
 		panelBurritoTopping.setBounds(353, 44, 214, 274);
 		contentPane.add(panelBurritoTopping);
+		panelBurritoTopping.setVisible(false);
 		
 		lblBurritoTopping = new JLabel("Burrito Topping");
 		lblBurritoTopping.setBounds(60, 13, 107, 16);
@@ -258,7 +261,6 @@ public class KioskDevice extends JFrame {
 		lblBeanPrice = new JLabel("500");
 		lblBeanPrice.setBounds(173, 244, 29, 16);
 		panelBurritoTopping.add(lblBeanPrice);
-		panelBurritoTopping.setVisible(false);
 		
 		//FrenchFriedTopping Panel
 		panelFrenchFriedTopping = new JPanel();
@@ -266,6 +268,7 @@ public class KioskDevice extends JFrame {
 		panelFrenchFriedTopping.setLayout(null);
 		panelFrenchFriedTopping.setBounds(353, 44, 214, 274);
 		contentPane.add(panelFrenchFriedTopping);
+		panelFrenchFriedTopping.setVisible(false);
 		
 		lblFrenchFriedTopping = new JLabel("French Fried Topping");
 		lblFrenchFriedTopping.setBounds(44, 12, 134, 16);
@@ -288,7 +291,6 @@ public class KioskDevice extends JFrame {
 		lblCheezePrice = new JLabel("1000");
 		lblCheezePrice.setBounds(146, 69, 48, 16);
 		panelFrenchFriedTopping.add(lblCheezePrice);
-		panelFrenchFriedTopping.setVisible(false);
 		
 		//NachoChipsTopping Panel
 		panelNachoChipsTopping = new JPanel();
@@ -296,6 +298,7 @@ public class KioskDevice extends JFrame {
 		panelNachoChipsTopping.setLayout(null);
 		panelNachoChipsTopping.setBounds(353, 44, 214, 274);
 		contentPane.add(panelNachoChipsTopping);
+		panelNachoChipsTopping.setVisible(false);
 		
 		lblNachoChipsTopping = new JLabel("Nacho Chips Topping");
 		lblNachoChipsTopping.setBounds(39, 12, 142, 16);
@@ -325,7 +328,6 @@ public class KioskDevice extends JFrame {
 		lblPeanutButterPrice = new JLabel("500");
 		lblPeanutButterPrice.setBounds(173, 94, 38, 16);
 		panelNachoChipsTopping.add(lblPeanutButterPrice);
-		panelNachoChipsTopping.setVisible(false);
 		
 		btnPutInCart = new JButton("Put In Cart");
 		btnPutInCart.setBounds(15, 330, 117, 29);
