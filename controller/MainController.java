@@ -48,13 +48,15 @@ public class MainController {
 	static Shrimp shrimp;
 	static Tomato tomato;
 	static WedgePotato wedgepotato;
-			
+	
+	static int foodIndex = -1;
+	static Food selected;
+	
 	static boolean flavorFlag = false;
 	static String currState = "";
 	
 	static SelectedFood doneSelect;
 	static CartView cartView = null;
-	
 	static ActionListener cartCountPlus;
 	static ActionListener cartCountMinus;
 			
@@ -98,38 +100,33 @@ public class MainController {
 		// open new frame
 		KioskDevice Kiosk = new KioskDevice();
 		Kiosk.setVisible(true);
-		
-		Food selected = new Food();
 
 		ActionListener FoodListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int index = -1;
+				selected = new Food();
 				boolean status = false;
 				for(int i = 0; i < 9; i++) {
 					if(Kiosk.chckbxMenu[i].isSelected()) {
-						index = i;
+						foodIndex = i;
 						status = true;
 					}
 				}
 				if(status) {
 					for(int j = 0; j < 9; j++) {
-						if(j != index)
+						if(j != foodIndex)
 							Kiosk.chckbxMenu[j].setEnabled(false);
 					}
-					if(index == 0 || index == 1 || index == 2) //Food is Burrito
-						Kiosk.panelBurritoTopping.setVisible(true);
-					else if(index == 3) //Food is French Fried
-						Kiosk.panelFrenchFriedTopping.setVisible(true);
-					else if(index == 5) //Food is Nacho Chips
-						Kiosk.panelNachoChipsTopping.setVisible(true);
+					if(foodIndex != 6 && foodIndex != 7 && foodIndex != 8) {
+						Kiosk.panelFlavor.setVisible(true);
+					}
 					
 					Iterator<Food> iterator = menuController.getMenu().iterator();
 					Food tmpFood = menuController.getMenu().getFirst();
 					
 					while(iterator.hasNext()) {
 						tmpFood = iterator.next();
-						if(tmpFood.name.equals(Kiosk.chckbxMenu[index].getText())) {
+						if(tmpFood.name.equals(Kiosk.chckbxMenu[foodIndex].getText())) {
 							selected.name = tmpFood.name;
 							selected.price = tmpFood.price;
 							break;
@@ -140,9 +137,7 @@ public class MainController {
 					for(int i = 0; i < 9; i++) {
 						Kiosk.chckbxMenu[i].setEnabled(true);
 					}
-					Kiosk.panelBurritoTopping.setVisible(false);
-					Kiosk.panelFrenchFriedTopping.setVisible(false);
-					Kiosk.panelNachoChipsTopping.setVisible(false);
+					Kiosk.panelFlavor.setVisible(false);
 				}
 			}
 			
@@ -164,6 +159,16 @@ public class MainController {
 						if(j != index)
 							Kiosk.chckbxFlavor[j].setEnabled(false);
 					}
+					if(foodIndex == 0 || foodIndex == 1 || foodIndex == 2) { //Food is Burrito
+						Kiosk.panelBurritoTopping.setVisible(true);
+					}
+					else if(foodIndex == 3) { //Food is French Fried
+						Kiosk.panelFrenchFriedTopping.setVisible(true);
+					}
+					else if(foodIndex == 5) { //Food is Nacho Chips
+						Kiosk.panelNachoChipsTopping.setVisible(true);
+					}
+					
 					String tmpFlavor = Kiosk.chckbxFlavor[index].getText();
 					switch(tmpFlavor) {
 						case "Mild":
@@ -184,6 +189,9 @@ public class MainController {
 					for(int i = 0; i < 3; i++) {
 						Kiosk.chckbxFlavor[i].setEnabled(true);
 					}
+					Kiosk.panelBurritoTopping.setVisible(false);
+					Kiosk.panelFrenchFriedTopping.setVisible(false);
+					Kiosk.panelNachoChipsTopping.setVisible(false);
 				}
 			}
 		};
@@ -1206,11 +1214,11 @@ public class MainController {
 			}
 		};
 		
-		doneSelect = new SelectedFood();
-		
 		ActionListener PutinListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == Kiosk.btnPutInCart) {
+					doneSelect = new SelectedFood();
+					
 					switch(currState) {
 					case "Bacon":
 						doneSelect = buyController.execute(bacon);
@@ -1255,6 +1263,7 @@ public class MainController {
 						doneSelect = buyController.execute(wedgepotato);
 						break;
 					}
+					doneSelect.count = 1;
 					cartController.addSelectedFood(doneSelect);
 					
 					// add cart view visible code
@@ -1264,6 +1273,25 @@ public class MainController {
 					// add cart view's button listener
 					cartView.btnPlus.addActionListener(cartCountPlus);
 					cartView.btnMinus.addActionListener(cartCountMinus);
+					
+					//reset KioskDevice
+					for(int i = 0; i < 9; i++) {
+						Kiosk.chckbxMenu[i].setSelected(false);
+						Kiosk.chckbxMenu[i].setEnabled(true);
+					}
+					Kiosk.panelFood.setVisible(true);
+					for(int i = 0; i < 3; i++) {
+						Kiosk.chckbxFlavor[i].setSelected(false);
+						Kiosk.chckbxFlavor[i].setEnabled(true);
+					}
+					Kiosk.panelFlavor.setVisible(false);
+					for(int i = 0; i < 14; i++) {
+						Kiosk.chckbxTopping[i].setSelected(false);
+						Kiosk.chckbxTopping[i].setEnabled(true);
+					}
+					Kiosk.panelBurritoTopping.setVisible(false);
+					Kiosk.panelFrenchFriedTopping.setVisible(false);
+					Kiosk.panelNachoChipsTopping.setVisible(false);
 				}
 			}
 		};
@@ -1289,7 +1317,9 @@ public class MainController {
 				whereModify = cartController.currentCart.indexOf(cartController.currentCart.get(row));
 			
 				SelectedFood tmpSelectedFood = cartController.currentCart.get(whereModify);
-				tmpSelectedFood.count--;
+				if(tmpSelectedFood.count != 0) {
+					tmpSelectedFood.count--;
+				}
 				
 				cartView.refresh();
 			}
