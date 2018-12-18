@@ -1279,7 +1279,6 @@ public class MainController {
 							doneSelect = buyController.execute(veryspicy);
 							break;
 						default:
-							System.out.println("ayeee");
 							break;
 						}
 
