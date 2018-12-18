@@ -22,6 +22,15 @@ public class Bean extends ToppingDecorator
 		addTopping();
 	}
 	
+	public Bean(ToppingDecorator topping){
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "Bean";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);

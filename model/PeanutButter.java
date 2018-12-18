@@ -22,6 +22,15 @@ public class PeanutButter extends ToppingDecorator
 		addTopping();
 	}
 	
+	public PeanutButter(ToppingDecorator topping){
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "PeanutButter";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);

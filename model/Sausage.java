@@ -22,6 +22,15 @@ public class Sausage extends ToppingDecorator
 		addTopping();
 	}
 	
+	public Sausage(ToppingDecorator topping){
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "Sausage";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);

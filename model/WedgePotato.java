@@ -22,6 +22,15 @@ public class WedgePotato extends ToppingDecorator
 		addTopping();
 	}
 	
+	public WedgePotato(ToppingDecorator topping){
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "WedgePotato";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);

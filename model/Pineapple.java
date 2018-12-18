@@ -22,6 +22,15 @@ public class Pineapple extends ToppingDecorator
 		addTopping();
 	}
 	
+	public Pineapple(ToppingDecorator topping){
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "Pineapple";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);
