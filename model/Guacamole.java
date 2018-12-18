@@ -14,8 +14,10 @@ package model;
 public class Guacamole extends ToppingDecorator
 {
 	public Guacamole(Food food){
-		this.myToppings = food.myToppings;
+		this.name = food.name;
+		this.flavor = food.flavor;
 		this.price = food.price;
+		this.myToppings = food.myToppings;
 		myStr = "Guacamole";
 		addTopping();
 	}

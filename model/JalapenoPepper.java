@@ -14,8 +14,10 @@ package model;
 public class JalapenoPepper extends ToppingDecorator
 {
 	public JalapenoPepper(Food food){
-		this.myToppings = food.myToppings;
+		this.name = food.name;
+		this.flavor = food.flavor;
 		this.price = food.price;
+		this.myToppings = food.myToppings;
 		myStr = "JalapenoPepper";
 		addTopping();
 	}

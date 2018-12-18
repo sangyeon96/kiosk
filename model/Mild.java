@@ -14,8 +14,9 @@ package model;
 public class Mild extends FlavorDecorator
 {	
 	public Mild(Food food){
-		this.myToppings = food.myToppings;
+		this.name = food.name;
 		this.price = food.price;
+		this.myToppings = food.myToppings;
 		myStr = "Mild";
 		setFlavor();
 	}

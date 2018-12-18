@@ -14,8 +14,9 @@ package model;
 public class Spicy extends FlavorDecorator
 {
 	public Spicy(Food food){
-		this.myToppings = food.myToppings;
+		this.name = food.name;
 		this.price = food.price;
+		this.myToppings = food.myToppings;
 		myStr = "Spicy";
 		setFlavor();
 	}

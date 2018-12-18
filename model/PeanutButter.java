@@ -14,8 +14,10 @@ package model;
 public class PeanutButter extends ToppingDecorator
 {
 	public PeanutButter(Food food){
-		this.myToppings = food.myToppings;
+		this.name = food.name;
+		this.flavor = food.flavor;
 		this.price = food.price;
+		this.myToppings = food.myToppings;
 		myStr = "PeanutButter";
 		addTopping();
 	}
