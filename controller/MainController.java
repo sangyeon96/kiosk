@@ -1269,6 +1269,18 @@ public class MainController {
 						case "Wedge Potato":
 							doneSelect = buyController.execute(wedgepotato);
 							break;
+						case "Mild":
+							doneSelect = buyController.execute(mild);
+							break;
+						case "Spicy":
+							doneSelect = buyController.execute(spicy);
+							break;
+						case "Very Spicy":
+							doneSelect = buyController.execute(veryspicy);
+							break;
+						default:
+							System.out.println("ayeee");
+							break;
 						}
 
 					}
