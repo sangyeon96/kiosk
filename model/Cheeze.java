@@ -22,9 +22,18 @@ public class Cheeze extends ToppingDecorator
 		addTopping();
 	}
 	
+	public Cheeze(ToppingDecorator topping){
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "Cheeze";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);
-		this.price += 1000;
+		price += 1000;
 	}
 }

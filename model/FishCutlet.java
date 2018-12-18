@@ -22,6 +22,15 @@ public class FishCutlet extends ToppingDecorator
 		addTopping();
 	}
 	
+	public FishCutlet(ToppingDecorator topping){
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "FishCutlet";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);

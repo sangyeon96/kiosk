@@ -22,9 +22,18 @@ public class Bacon extends ToppingDecorator
 		addTopping();
 	}
 
+	public Bacon(ToppingDecorator topping){
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "Bacon";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);
-		this.price += 2000;
+		price += 2000;
 	}
 }

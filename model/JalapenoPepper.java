@@ -22,6 +22,15 @@ public class JalapenoPepper extends ToppingDecorator
 		addTopping();
 	}
 	
+	public JalapenoPepper(ToppingDecorator topping){
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "JalapenoPepper";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);

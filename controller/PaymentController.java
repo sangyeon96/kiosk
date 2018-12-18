@@ -23,13 +23,13 @@ public class PaymentController
 		paymentList = new LinkedList<Payment>();
 	}
 	
-	public void addPayment()
+	public void addPayment(Payment payment)
 	{
-	
+		paymentList.add(payment);
 	}
 	
-	public void deletePayment()
+	public void deletePayment(Payment payment)
 	{
-	
+		paymentList.remove(payment);
 	}
 }

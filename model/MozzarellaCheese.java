@@ -22,6 +22,15 @@ public class MozzarellaCheese extends ToppingDecorator
 		addTopping();
 	}
 	
+	public MozzarellaCheese(ToppingDecorator topping){
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "MozzarellaCheese";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);

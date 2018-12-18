@@ -22,6 +22,15 @@ public class Guacamole extends ToppingDecorator
 		addTopping();
 	}
 	
+	public Guacamole(ToppingDecorator topping){
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "Guacamole";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);

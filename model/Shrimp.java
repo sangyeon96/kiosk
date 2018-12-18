@@ -22,6 +22,15 @@ public class Shrimp extends ToppingDecorator
 		addTopping();
 	}
 	
+	public Shrimp(ToppingDecorator topping){
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "Shrimp";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);

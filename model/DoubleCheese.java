@@ -22,6 +22,15 @@ public class DoubleCheese extends ToppingDecorator
 		addTopping();
 	}
 	
+	public DoubleCheese(ToppingDecorator topping) {
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "DoubleCheese";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);

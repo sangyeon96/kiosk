@@ -2,10 +2,13 @@ package controller;
 
 import java.util.LinkedList;
 
+import javax.swing.JOptionPane;
+
 import model.Food;
 import model.Order;
 import model.Payment;
 import model.SelectedFood;
+import model.ToppingDecorator;
 
 //
 //
@@ -53,6 +56,17 @@ public class Buy implements Command
 		return mySelected;
 	}
 	
+	public SelectedFood putInCart(ToppingDecorator WillAddTopp)
+	{
+		SelectedFood mySelected = new SelectedFood();
+		mySelected.name = WillAddTopp.name;
+		mySelected.price = WillAddTopp.price;
+		mySelected.flavor = WillAddTopp.flavor;
+		mySelected.selectedTopping = WillAddTopp.myToppings;
+		
+		return mySelected;
+	}
+	
 	public boolean purchase(LinkedList<SelectedFood> finalCart)
 	{
 		/*
@@ -61,28 +75,30 @@ public class Buy implements Command
 		 *  3. get Req from external system
 		 *  4. make Order object and put it in orderList
 		 */
-		Payment payment = new Payment();
-		payment.name = "cash";
-		payment.device.ACK = true;
 		
-		return true;
+		controlPurchase.calculateTotalPrice(finalCart);
+		controlPurchase.choosePayment();
+		
+		return controlPurchase.tryPurchase();
 	}
 	
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public SelectedFood execute(Food WillAdd) {
-		// TODO Auto-generated method stub
 		return putInCart(WillAdd);
+	}
+	
+	@Override
+	public SelectedFood execute(ToppingDecorator WillAddTopp) {
+		return putInCart(WillAddTopp);
 	}
 
 	@Override
 	public boolean execute(LinkedList<SelectedFood> finalCart) {
-		// TODO Auto-generated method stub
 		return purchase(finalCart);
 	}
 }

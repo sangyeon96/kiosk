@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import model.Food;
 import model.SelectedFood;
+import model.ToppingDecorator;
 
 //
 //
@@ -20,4 +21,5 @@ public interface Command {
 	public void execute();
 	public boolean execute(LinkedList<SelectedFood> finalCart);
 	public SelectedFood execute(Food food);
+	public SelectedFood execute(ToppingDecorator topping);
 }

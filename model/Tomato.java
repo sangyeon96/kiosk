@@ -22,6 +22,15 @@ public class Tomato extends ToppingDecorator
 		addTopping();
 	}
 	
+	public Tomato(ToppingDecorator topping){
+		this.name = topping.name;
+		this.flavor = topping.flavor;
+		this.price = topping.price;
+		this.myToppings = topping.myToppings;
+		myStr = "Tomato";
+		addTopping();
+	}
+	
 	public void addTopping()
 	{
 		myToppings.add(myStr);

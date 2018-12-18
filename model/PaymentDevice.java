@@ -13,5 +13,5 @@ package model;
 
 public class PaymentDevice
 {
-	public boolean ACK;
+	public boolean ACK = true;
 }
