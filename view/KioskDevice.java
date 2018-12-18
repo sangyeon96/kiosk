@@ -95,28 +95,28 @@ public class KioskDevice extends JFrame {
 		chckbxMenu[0].setBounds(6, 40, 129, 23);
 		
 		chckbxMenu[1] = new JCheckBox("Beef Burrito");
-		chckbxMenu[1].setBounds(6, 65, 104, 23);
+		chckbxMenu[1].setBounds(6, 65, 129, 23);
 		
 		chckbxMenu[2] = new JCheckBox("Mix Burrito");
-		chckbxMenu[2].setBounds(6, 90, 104, 23);
+		chckbxMenu[2].setBounds(6, 90, 129, 23);
 		
 		chckbxMenu[3] = new JCheckBox("French Fried");
-		chckbxMenu[3].setBounds(6, 115, 116, 23);
+		chckbxMenu[3].setBounds(6, 115, 129, 23);
 		
 		chckbxMenu[4] = new JCheckBox("Onion Ring");
-		chckbxMenu[4].setBounds(6, 140, 104, 23);
+		chckbxMenu[4].setBounds(6, 140, 129, 23);
 		
 		chckbxMenu[5] = new JCheckBox("Nacho Chips");
-		chckbxMenu[5].setBounds(6, 165, 116, 23);
+		chckbxMenu[5].setBounds(6, 165, 129, 23);
 		
 		chckbxMenu[6] = new JCheckBox("Coke");
-		chckbxMenu[6].setBounds(6, 190, 69, 23);
+		chckbxMenu[6].setBounds(6, 190, 129, 23);
 		
 		chckbxMenu[7] = new JCheckBox("Soda");
-		chckbxMenu[7].setBounds(6, 215, 69, 23);
+		chckbxMenu[7].setBounds(6, 215, 129, 23);
 		
 		chckbxMenu[8] = new JCheckBox("Beer");
-		chckbxMenu[8].setBounds(6, 240, 69, 23);
+		chckbxMenu[8].setBounds(6, 240, 129, 23);
 		
 		for(i = 0; i < 9; i++) {
 			panelFood.add(chckbxMenu[i]);
@@ -171,10 +171,10 @@ public class KioskDevice extends JFrame {
 		panelFlavor.add(lblFlavor);
 		
 		chckbxFlavor[0] = new JCheckBox("Mild");
-		chckbxFlavor[0].setBounds(6, 40, 68, 23);
+		chckbxFlavor[0].setBounds(6, 40, 105, 23);
 		
 		chckbxFlavor[1] = new JCheckBox("Spicy");
-		chckbxFlavor[1].setBounds(6, 65, 68, 23);
+		chckbxFlavor[1].setBounds(6, 65, 105, 23);
 		
 		chckbxFlavor[2] = new JCheckBox("Very Spicy");
 		chckbxFlavor[2].setBounds(6, 90, 105, 23);
@@ -196,31 +196,31 @@ public class KioskDevice extends JFrame {
 		panelBurritoTopping.add(lblBurritoTopping);
 		
 		chckbxTopping[0] = new JCheckBox("Wedge Potato");
-		chckbxTopping[0].setBounds(6, 40, 117, 23);
+		chckbxTopping[0].setBounds(6, 40, 148, 23);
 		
 		chckbxTopping[1] = new JCheckBox("Double Cheese");
-		chckbxTopping[1].setBounds(6, 65, 128, 23);
+		chckbxTopping[1].setBounds(6, 65, 148, 23);
 		
 		chckbxTopping[2] = new JCheckBox("Mozzarella Cheese");
 		chckbxTopping[2].setBounds(6, 90, 148, 23);
 		
 		chckbxTopping[3] = new JCheckBox("Jalapeno Pepper");
-		chckbxTopping[3].setBounds(6, 115, 131, 23);
+		chckbxTopping[3].setBounds(6, 115, 148, 23);
 		
 		chckbxTopping[4] = new JCheckBox("Pineapple");
-		chckbxTopping[4].setBounds(6, 140, 97, 23);
+		chckbxTopping[4].setBounds(6, 140, 148, 23);
 		
 		chckbxTopping[5] = new JCheckBox("Shrimp");
-		chckbxTopping[5].setBounds(6, 165, 76, 23);
+		chckbxTopping[5].setBounds(6, 165, 148, 23);
 		
 		chckbxTopping[6] = new JCheckBox("Sausage");
-		chckbxTopping[6].setBounds(6, 190, 97, 23);
+		chckbxTopping[6].setBounds(6, 190, 148, 23);
 		
 		chckbxTopping[7] = new JCheckBox("Fish Cutlet");
-		chckbxTopping[7].setBounds(6, 215, 117, 23);
+		chckbxTopping[7].setBounds(6, 215, 148, 23);
 		
 		chckbxTopping[8] = new JCheckBox("Bean");
-		chckbxTopping[8].setBounds(6, 240, 67, 23);
+		chckbxTopping[8].setBounds(6, 240, 148, 23);
 		
 		for(i = 0; i < 9; i++) {
 			panelBurritoTopping.add(chckbxTopping[i]);
@@ -275,7 +275,7 @@ public class KioskDevice extends JFrame {
 		panelFrenchFriedTopping.add(lblFrenchFriedTopping);
 		
 		chckbxTopping[9] = new JCheckBox("Bacon");
-		chckbxTopping[9].setBounds(6, 40, 117, 23);
+		chckbxTopping[9].setBounds(6, 40, 128, 23);
 		
 		chckbxTopping[10] = new JCheckBox("Cheeze");
 		chckbxTopping[10].setBounds(6, 65, 128, 23);
@@ -305,10 +305,10 @@ public class KioskDevice extends JFrame {
 		panelNachoChipsTopping.add(lblNachoChipsTopping);
 		
 		chckbxTopping[11] = new JCheckBox("Guacamole");
-		chckbxTopping[11].setBounds(6, 40, 117, 23);
+		chckbxTopping[11].setBounds(6, 40, 148, 23);
 		
 		chckbxTopping[12] = new JCheckBox("Tomato");
-		chckbxTopping[12].setBounds(6, 65, 128, 23);
+		chckbxTopping[12].setBounds(6, 65, 148, 23);
 		
 		chckbxTopping[13] = new JCheckBox("Peanut Butter");
 		chckbxTopping[13].setBounds(6, 90, 148, 23);
