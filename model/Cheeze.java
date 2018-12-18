@@ -25,6 +25,6 @@ public class Cheeze extends ToppingDecorator
 	public void addTopping()
 	{
 		myToppings.add(myStr);
-		price += 1000;
+		this.price += 1000;
 	}
 }

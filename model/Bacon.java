@@ -25,6 +25,6 @@ public class Bacon extends ToppingDecorator
 	public void addTopping()
 	{
 		myToppings.add(myStr);
-		price += 2000;
+		this.price += 2000;
 	}
 }
