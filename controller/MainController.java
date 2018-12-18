@@ -49,7 +49,11 @@ public class MainController {
 	static Tomato tomato;
 	static WedgePotato wedgepotato;
 			
+	static int foodIndex = -1;
+	static Food selected;
+	
 	static boolean flavorFlag = false;
+	static boolean toppingFlag = false;
 	static String currState = "";
 	
 	static SelectedFood doneSelect;
@@ -98,38 +102,35 @@ public class MainController {
 		// open new frame
 		KioskDevice Kiosk = new KioskDevice();
 		Kiosk.setVisible(true);
-		
-		Food selected = new Food();
 
 		ActionListener FoodListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int index = -1;
+				selected = new Food();
 				boolean status = false;
 				for(int i = 0; i < 9; i++) {
 					if(Kiosk.chckbxMenu[i].isSelected()) {
-						index = i;
+						foodIndex = i;
 						status = true;
 					}
 				}
 				if(status) {
 					for(int j = 0; j < 9; j++) {
-						if(j != index)
+						if(j != foodIndex)
 							Kiosk.chckbxMenu[j].setEnabled(false);
 					}
-					if(index == 0 || index == 1 || index == 2) //Food is Burrito
-						Kiosk.panelBurritoTopping.setVisible(true);
-					else if(index == 3) //Food is French Fried
-						Kiosk.panelFrenchFriedTopping.setVisible(true);
-					else if(index == 5) //Food is Nacho Chips
-						Kiosk.panelNachoChipsTopping.setVisible(true);
+
+					if(foodIndex != 4 && foodIndex != 6 && foodIndex != 7 && foodIndex != 8) {
+						Kiosk.panelFlavor.setVisible(true);
+						toppingFlag = true;
+					}
 					
 					Iterator<Food> iterator = menuController.getMenu().iterator();
 					Food tmpFood = menuController.getMenu().getFirst();
 					
 					while(iterator.hasNext()) {
 						tmpFood = iterator.next();
-						if(tmpFood.name.equals(Kiosk.chckbxMenu[index].getText())) {
+						if(tmpFood.name.equals(Kiosk.chckbxMenu[foodIndex].getText())) {
 							selected.name = tmpFood.name;
 							selected.price = tmpFood.price;
 							break;
@@ -164,6 +165,20 @@ public class MainController {
 						if(j != index)
 							Kiosk.chckbxFlavor[j].setEnabled(false);
 					}
+					
+					if(foodIndex == 0 || foodIndex == 1 || foodIndex == 2) { //Food is Burrito
+						Kiosk.panelBurritoTopping.setVisible(true);
+					}
+					else if(foodIndex == 3) { //Food is French Fried
+						Kiosk.panelFrenchFriedTopping.setVisible(true);
+					}
+					else if(foodIndex == 5) { //Food is Nacho Chips
+						Kiosk.panelNachoChipsTopping.setVisible(true);
+					}
+					else {
+						
+					}
+					
 					String tmpFlavor = Kiosk.chckbxFlavor[index].getText();
 					switch(tmpFlavor) {
 						case "Mild":
@@ -1206,55 +1221,61 @@ public class MainController {
 			}
 		};
 		
-		doneSelect = new SelectedFood();
-		
 		ActionListener PutinListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == Kiosk.btnPutInCart) {
-					switch(currState) {
-					case "Bacon":
-						doneSelect = buyController.execute(bacon);
-						break;
-					case "Bean":
-						doneSelect = buyController.execute(bean);
-						break;
-					case "Cheeze":
-						doneSelect = buyController.execute(cheeze);
-						break;
-					case "Double Cheese":
-						doneSelect = buyController.execute(doublecheese);
-						break;
-					case "Fish Cutlet":
-						doneSelect = buyController.execute(fishcutlet);
-						break;
-					case "Guacamole":
-						doneSelect = buyController.execute(guacamole);
-						break;
-					case "Jalapeno Pepper":
-						doneSelect = buyController.execute(jalapenopepper);
-						break;
-					case "Mozzarella Cheese":
-						doneSelect = buyController.execute(mozzarellacheese);
-						break;
-					case "Peanut Butter":
-						doneSelect = buyController.execute(peanutbutter);
-						break;
-					case "Pineapple":
-						doneSelect = buyController.execute(pineapple);
-						break;
-					case "Sausage":
-						doneSelect = buyController.execute(sausage);
-						break;
-					case "Shrimp":
-						doneSelect = buyController.execute(shrimp);
-						break;
-					case "Tomato":
-						doneSelect = buyController.execute(tomato);
-						break;
-					case "Wedge Potato":
-						doneSelect = buyController.execute(wedgepotato);
-						break;
+					doneSelect = new SelectedFood();
+					if(toppingFlag) {
+						switch(currState) {
+						case "Bacon":
+							doneSelect = buyController.execute(bacon);
+							break;
+						case "Bean":
+							doneSelect = buyController.execute(bean);
+							break;
+						case "Cheeze":
+							doneSelect = buyController.execute(cheeze);
+							break;
+						case "Double Cheese":
+							doneSelect = buyController.execute(doublecheese);
+							break;
+						case "Fish Cutlet":
+							doneSelect = buyController.execute(fishcutlet);
+							break;
+						case "Guacamole":
+							doneSelect = buyController.execute(guacamole);
+							break;
+						case "Jalapeno Pepper":
+							doneSelect = buyController.execute(jalapenopepper);
+							break;
+						case "Mozzarella Cheese":
+							doneSelect = buyController.execute(mozzarellacheese);
+							break;
+						case "Peanut Butter":
+							doneSelect = buyController.execute(peanutbutter);
+							break;
+						case "Pineapple":
+							doneSelect = buyController.execute(pineapple);
+							break;
+						case "Sausage":
+							doneSelect = buyController.execute(sausage);
+							break;
+						case "Shrimp":
+							doneSelect = buyController.execute(shrimp);
+							break;
+						case "Tomato":
+							doneSelect = buyController.execute(tomato);
+							break;
+						case "Wedge Potato":
+							doneSelect = buyController.execute(wedgepotato);
+							break;
+						}
+
 					}
+					else {
+						doneSelect = buyController.execute(selected);
+					}
+					doneSelect.count = 1;
 					cartController.addSelectedFood(doneSelect);
 					
 					// add cart view visible code
@@ -1264,6 +1285,27 @@ public class MainController {
 					// add cart view's button listener
 					cartView.btnPlus.addActionListener(cartCountPlus);
 					cartView.btnMinus.addActionListener(cartCountMinus);
+					
+					//reset KioskDevice
+					flavorFlag = false;
+					toppingFlag = false;
+					for(int i = 0; i < 9; i++) {
+						Kiosk.chckbxMenu[i].setSelected(false);
+						Kiosk.chckbxMenu[i].setEnabled(true);
+					}
+					Kiosk.panelFood.setVisible(true);
+					for(int i = 0; i < 3; i++) {
+						Kiosk.chckbxFlavor[i].setSelected(false);
+						Kiosk.chckbxFlavor[i].setEnabled(true);
+					}
+					Kiosk.panelFlavor.setVisible(false);
+					for(int i = 0; i < 14; i++) {
+						Kiosk.chckbxTopping[i].setSelected(false);
+						Kiosk.chckbxTopping[i].setEnabled(true);
+					}
+					Kiosk.panelBurritoTopping.setVisible(false);
+					Kiosk.panelFrenchFriedTopping.setVisible(false);
+					Kiosk.panelNachoChipsTopping.setVisible(false);
 				}
 			}
 		};
