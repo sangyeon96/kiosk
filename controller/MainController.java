@@ -48,7 +48,7 @@ public class MainController {
 	static Shrimp shrimp;
 	static Tomato tomato;
 	static WedgePotato wedgepotato;
-	
+			
 	static int foodIndex = -1;
 	static Food selected;
 	
@@ -58,6 +58,7 @@ public class MainController {
 	
 	static SelectedFood doneSelect;
 	static CartView cartView = null;
+	
 	static ActionListener cartCountPlus;
 	static ActionListener cartCountMinus;
 			
@@ -118,6 +119,7 @@ public class MainController {
 						if(j != foodIndex)
 							Kiosk.chckbxMenu[j].setEnabled(false);
 					}
+
 					if(foodIndex != 4 && foodIndex != 6 && foodIndex != 7 && foodIndex != 8) {
 						Kiosk.panelFlavor.setVisible(true);
 						toppingFlag = true;
@@ -139,7 +141,9 @@ public class MainController {
 					for(int i = 0; i < 9; i++) {
 						Kiosk.chckbxMenu[i].setEnabled(true);
 					}
-					Kiosk.panelFlavor.setVisible(false);
+					Kiosk.panelBurritoTopping.setVisible(false);
+					Kiosk.panelFrenchFriedTopping.setVisible(false);
+					Kiosk.panelNachoChipsTopping.setVisible(false);
 				}
 			}
 			
@@ -161,6 +165,7 @@ public class MainController {
 						if(j != index)
 							Kiosk.chckbxFlavor[j].setEnabled(false);
 					}
+					
 					if(foodIndex == 0 || foodIndex == 1 || foodIndex == 2) { //Food is Burrito
 						Kiosk.panelBurritoTopping.setVisible(true);
 					}
@@ -194,9 +199,6 @@ public class MainController {
 					for(int i = 0; i < 3; i++) {
 						Kiosk.chckbxFlavor[i].setEnabled(true);
 					}
-					Kiosk.panelBurritoTopping.setVisible(false);
-					Kiosk.panelFrenchFriedTopping.setVisible(false);
-					Kiosk.panelNachoChipsTopping.setVisible(false);
 				}
 			}
 		};
@@ -1268,7 +1270,7 @@ public class MainController {
 							doneSelect = buyController.execute(wedgepotato);
 							break;
 						}
-						
+
 					}
 					else {
 						doneSelect = buyController.execute(selected);
@@ -1329,9 +1331,7 @@ public class MainController {
 				whereModify = cartController.currentCart.indexOf(cartController.currentCart.get(row));
 			
 				SelectedFood tmpSelectedFood = cartController.currentCart.get(whereModify);
-				if(tmpSelectedFood.count != 0) {
-					tmpSelectedFood.count--;
-				}
+				tmpSelectedFood.count--;
 				
 				cartView.refresh();
 			}
