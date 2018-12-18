@@ -206,13 +206,17 @@ public class MainController {
 			}
 		};
 		
+		short[] toppVect = new short[14];
+		
 		ActionListener ToppListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int index = -1;
 				boolean status = false;
+				// need to fix here for topping vector
 				for(int i = 0; i < 14; i++) {
-					if(Kiosk.chckbxTopping[i].isSelected()) {
+					if(Kiosk.chckbxTopping[i].isSelected() & (toppVect[i] != 1)) {
+						toppVect[i] = 1;
 						index = i;
 						status = true;
 					}
@@ -1227,6 +1231,9 @@ public class MainController {
 		ActionListener PutinListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == Kiosk.btnPutInCart) {
+					for(int i = 0; i < 14; i++) {
+						toppVect[i] = 0;
+					}
 					doneSelect = new SelectedFood();
 					if(toppingFlag) {
 						switch(currState) {
@@ -1282,7 +1289,6 @@ public class MainController {
 							doneSelect = buyController.execute(veryspicy);
 							break;
 						default:
-							System.out.println("ayeee");
 							break;
 						}
 
