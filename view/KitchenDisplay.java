@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 import model.Order;
 import model.SelectedFood;
+import javax.swing.JTextArea;
 
 public class KitchenDisplay extends JFrame {
 
@@ -19,16 +20,17 @@ public class KitchenDisplay extends JFrame {
 	public DefaultTableModel kitchenModel;
 	public JTable kitchenTable;
 	public JScrollPane scroll;
+	public JScrollPane textAreaScroll;
+	public JTextArea orderTextArea;
 	
 	public boolean refundACK;
-
-
+	
 	/**
 	 * Create the frame.
 	 */
 	public KitchenDisplay() {
 		setTitle("Kitchen View");
-		setBounds(100, 100, 479, 346);
+		setBounds(100, 100, 976, 346);
 		setResizable(false);
 		
 		contentPane = new JPanel();
@@ -41,10 +43,48 @@ public class KitchenDisplay extends JFrame {
 		scroll = new JScrollPane(kitchenTable);
 		scroll.setBounds(10, 10, 454, 300);
 		contentPane.add(scroll);
+		
+		textAreaScroll = new JScrollPane();
+		textAreaScroll.setBounds(476, 10, 494, 300);
+		contentPane.add(textAreaScroll);
+		
+		orderTextArea = new JTextArea();
+		orderTextArea.setEditable(false);
+		orderTextArea.setBounds(476, 10, 300, 300);
+		textAreaScroll.setViewportView(orderTextArea);
 	}
 	
 	public void displayOrder(LinkedList<Order> orderList)
 	{
+		LinkedList<SelectedFood> purchasedFoods = new LinkedList();
+		LinkedList<String> toppings = new LinkedList();
+		
+		for(Order tmpOrder: orderList) {
+			purchasedFoods = tmpOrder.purchasedFoods;
+			for(SelectedFood food: purchasedFoods) {
+				String foodName = food.name;
+				String flavor = food.flavor;
+				toppings = food.selectedTopping;
+				int count = food.count;
+			
+				if(flavor != null)
+					orderTextArea.append(flavor+" ");
+				
+				orderTextArea.append(foodName+" ");
+				if(toppings != null) {
+					orderTextArea.append(" with ");
+					orderTextArea.append("( ");
+					for(String topping: toppings) {
+						orderTextArea.append(" "+topping+" ");
+					}
+					orderTextArea.append(" )");
+				}
+				orderTextArea.append(" X"+count);
+				orderTextArea.append("\n");
+			}
+			break;
+		}
+		
 		kitchenModel.setNumRows(0);
 		for(Order tmpOrder: orderList) {
 			Vector<Object> orderVector = new Vector();
@@ -68,5 +108,4 @@ public class KitchenDisplay extends JFrame {
 	{
 
 	}
-
 }
