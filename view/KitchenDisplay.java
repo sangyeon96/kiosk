@@ -31,7 +31,6 @@ public class KitchenDisplay extends JFrame {
 	public KitchenDisplay() {
 		setTitle("Kitchen View");
 		setBounds(100, 100, 976, 346);
-		setResizable(false);
 		
 		contentPane = new JPanel();
 		contentPane.setLayout(null);

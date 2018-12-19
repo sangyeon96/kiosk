@@ -35,7 +35,6 @@ public class CartView extends JFrame {
 		
 		setTitle("Cart");
 		setBounds(100, 100, 1317, 300);
-		setResizable(false);
 		
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
@@ -60,11 +59,11 @@ public class CartView extends JFrame {
 		}
 		
 		btnPlus = new JButton("+");
-		btnPlus.setBounds(10, 244, 31, 25);
+		btnPlus.setBounds(10, 244, 45, 25);
 		contentPane.add(btnPlus);
 		
 		btnMinus = new JButton("-");
-		btnMinus.setBounds(50, 244, 31, 25);
+		btnMinus.setBounds(50, 244, 45, 25);
 		contentPane.add(btnMinus);
 		
 		btnClose = new JButton("Close");

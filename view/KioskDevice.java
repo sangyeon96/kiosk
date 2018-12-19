@@ -68,7 +68,6 @@ public class KioskDevice extends JFrame {
 		
 		setTitle("Kiosk Device");
 		setBounds(100, 100, 588, 387);
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		contentPane = new JPanel();
